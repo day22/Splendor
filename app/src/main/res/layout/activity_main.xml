@@ -13,6 +13,7 @@
         android:id="@+id/playerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -90,7 +91,7 @@
         <LinearLayout
             android:id="@+id/player2Box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="#FFFFFF"
@@ -162,7 +163,7 @@
         <LinearLayout
             android:id="@+id/player3Box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="#FFFFFF"
@@ -228,7 +229,7 @@
         <LinearLayout
             android:id="@+id/player4Box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="3dp"
             android:layout_weight="1"
             android:background="#FFFFFF"
@@ -302,12 +303,14 @@
     <LinearLayout
         android:id="@+id/playBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="3">
 
         <LinearLayout
             android:id="@+id/infoBox"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="3"
             android:orientation="vertical"
             tools:visibility="visible">
 
@@ -503,36 +506,42 @@
                 android:id="@+id/gem1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Coins" />
 
             <Button
                 android:id="@+id/gem2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Coins" />
 
             <Button
                 android:id="@+id/gem3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="coins" />
 
             <Button
                 android:id="@+id/gem4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Coins" />
 
             <Button
                 android:id="@+id/gem5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Coins" />
 
             <Button
                 android:id="@+id/gem6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Coins" />
         </LinearLayout>
 
@@ -541,33 +550,34 @@
     <LinearLayout
         android:id="@+id/CurrentPlayer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/reserveBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <Button
                 android:id="@+id/reserveSlot1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Res 1" />
 
             <Button
                 android:id="@+id/reserveSlot2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Res 2" />
 
             <Button
                 android:id="@+id/reserveSlot3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Res 3" />
         </LinearLayout>
