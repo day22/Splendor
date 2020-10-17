@@ -161,98 +161,104 @@ public class SplendorGameState {
      * Deep copy constructor
      * TODO add nobles and card visibility
      */
-    public SplendorGameState(SplendorGameState newGameState) {
+    public SplendorGameState(SplendorGameState stateToCopy) {
+
+        //creates deeps copy of each players hands
+        this.p1Hand = new Hand(stateToCopy.p1Hand);
+        this.p2Hand = new Hand(stateToCopy.p2Hand);
+        this.p3Hand = new Hand(stateToCopy.p3Hand);
+        this.p4Hand = new Hand(stateToCopy.p4Hand);
 
         //deep copy of player 1 points and reserve cards
-        newGameState.p1GoldCoins = this.getP1GoldCoins();
-        newGameState.p1GoldPts = this.getP1GoldPts();
-        newGameState.p1EmeraldCoins = this.getP1EmeraldCoins();
-        newGameState.p1EmeraldPts = this.getP1EmeraldPts();
-        newGameState.p1SapphireCoins = this.getP1SapphireCoins();
-        newGameState.p1SapphirePts = this.getP1SapphirePts();
-        newGameState.p1RubyCoins = this.getP1RubyCoins();
-        newGameState.p1RubyPts = this.getP1RubyPts();
-        newGameState.p1OnyxCoins = this.getP1OnyxCoins();
-        newGameState.p1OnyxPts = this.getP1OnyxPts();
-        newGameState.p1DiamondCoins = this.getP1DiamondCoins();
-        newGameState.p1PrestigePts = this.getP1OnyxPts();
-        newGameState.p1NumCardsReserved = this.getP1NumCardsReserved();
-        newGameState.p1ReserveCards = new ArrayList<Card>();
-        for (Card card : this.p1ReserveCards) {
-            newGameState.p1ReserveCards.add(new Card(card)); //uses copy constructor in card
+        this.p1GoldCoins = stateToCopy.getP1GoldCoins();
+        this.p1GoldPts = stateToCopy.getP1GoldPts();
+        this.p1EmeraldCoins = stateToCopy.getP1EmeraldCoins();
+        this.p1EmeraldPts = stateToCopy.getP1EmeraldPts();
+        this.p1SapphireCoins = stateToCopy.getP1SapphireCoins();
+        this.p1SapphirePts = stateToCopy.getP1SapphirePts();
+        this.p1RubyCoins = stateToCopy.getP1RubyCoins();
+        this.p1RubyPts = stateToCopy.getP1RubyPts();
+        this.p1OnyxCoins = stateToCopy.getP1OnyxCoins();
+        this.p1OnyxPts = stateToCopy.getP1OnyxPts();
+        this.p1DiamondCoins = stateToCopy.getP1DiamondCoins();
+        this.p1PrestigePts = stateToCopy.getP1OnyxPts();
+        this.p1NumCardsReserved = stateToCopy.getP1NumCardsReserved();
+        this.p1ReserveCards = new ArrayList<Card>();
+        for (Card card : stateToCopy.p1ReserveCards) {
+            this.p1ReserveCards.add(new Card(card)); //uses copy constructor in card
         }
 
         //deep copy of player 2 points and reserve cards
-        newGameState.p2GoldCoins = this.getP2GoldCoins();
-        newGameState.p2GoldPts = this.getP2GoldPts();
-        newGameState.p2EmeraldCoins = this.getP2EmeraldCoins();
-        newGameState.p2EmeraldPts = this.getP2EmeraldPts();
-        newGameState.p2SapphireCoins = this.getP2SapphireCoins();
-        newGameState.p2SapphirePts = this.getP2SapphirePts();
-        newGameState.p2RubyCoins = this.getP2RubyCoins();
-        newGameState.p2RubyPts = this.getP2RubyPts();
-        newGameState.p2OnyxCoins = this.getP2OnyxCoins();
-        newGameState.p2OnyxPts = this.getP2OnyxPts();
-        newGameState.p2DiamondCoins = this.getP2DiamondCoins();
-        newGameState.p2PrestigePts = this.getP2OnyxPts();
-        newGameState.p2NumCardsReserved = this.getP2NumCardsReserved();
-        newGameState.p2ReserveCards = new ArrayList<Card>();
-        for (Card card : this.p2ReserveCards) {
-            newGameState.p2ReserveCards.add(new Card(card)); //uses copy constructor in card
+        this.p2GoldCoins = stateToCopy.getP2GoldCoins();
+        this.p2GoldPts = stateToCopy.getP2GoldPts();
+        this.p2EmeraldCoins = stateToCopy.getP2EmeraldCoins();
+        this.p2EmeraldPts = stateToCopy.getP2EmeraldPts();
+        this.p2SapphireCoins = stateToCopy.getP2SapphireCoins();
+        this.p2SapphirePts = stateToCopy.getP2SapphirePts();
+        this.p2RubyCoins = stateToCopy.getP2RubyCoins();
+        this.p2RubyPts = stateToCopy.getP2RubyPts();
+        this.p2OnyxCoins = stateToCopy.getP2OnyxCoins();
+        this.p2OnyxPts = stateToCopy.getP2OnyxPts();
+        this.p2DiamondCoins = stateToCopy.getP2DiamondCoins();
+        this.p2PrestigePts = stateToCopy.getP2OnyxPts();
+        this.p2NumCardsReserved = stateToCopy.getP2NumCardsReserved();
+        this.p2ReserveCards = new ArrayList<Card>();
+        for (Card card : stateToCopy.p2ReserveCards) {
+            this.p2ReserveCards.add(new Card(card)); //uses copy constructor in card
         }
 
         //deep copy of player 3 points and reserve cards
-        newGameState.p3GoldCoins = this.getP3GoldCoins();
-        newGameState.p3GoldPts = this.getP3GoldPts();
-        newGameState.p3EmeraldCoins = this.getP3EmeraldCoins();
-        newGameState.p3EmeraldPts = this.getP3EmeraldPts();
-        newGameState.p3SapphireCoins = this.getP3SapphireCoins();
-        newGameState.p3SapphirePts = this.getP3SapphirePts();
-        newGameState.p3RubyCoins = this.getP3RubyCoins();
-        newGameState.p3RubyPts = this.getP3RubyPts();
-        newGameState.p3OnyxCoins = this.getP3OnyxCoins();
-        newGameState.p3OnyxPts = this.getP3OnyxPts();
-        newGameState.p3DiamondCoins = this.getP3DiamondCoins();
-        newGameState.p3PrestigePts = this.getP3OnyxPts();
-        newGameState.p3NumCardsReserved = this.getP3NumCardsReserved();
-        newGameState.p3ReserveCards = new ArrayList<Card>();
-        for (Card card : this.p3ReserveCards) {
-            newGameState.p3ReserveCards.add(new Card(card)); //uses copy constructor in card
+        this.p3GoldCoins = stateToCopy.getP3GoldCoins();
+        this.p3GoldPts = stateToCopy.getP3GoldPts();
+        this.p3EmeraldCoins = stateToCopy.getP3EmeraldCoins();
+        this.p3EmeraldPts = stateToCopy.getP3EmeraldPts();
+        this.p3SapphireCoins = stateToCopy.getP3SapphireCoins();
+        this.p3SapphirePts = stateToCopy.getP3SapphirePts();
+        this.p3RubyCoins = stateToCopy.getP3RubyCoins();
+        this.p3RubyPts = stateToCopy.getP3RubyPts();
+        this.p3OnyxCoins = stateToCopy.getP3OnyxCoins();
+        this.p3OnyxPts = stateToCopy.getP3OnyxPts();
+        this.p3DiamondCoins = stateToCopy.getP3DiamondCoins();
+        this.p3PrestigePts = stateToCopy.getP3OnyxPts();
+        this.p3NumCardsReserved = stateToCopy.getP3NumCardsReserved();
+        this.p3ReserveCards = new ArrayList<Card>();
+        for (Card card : stateToCopy.p3ReserveCards) {
+            this.p3ReserveCards.add(new Card(card)); //uses copy constructor in card
         }
 
         //deep copy of player 4 points and reserve cards
-        newGameState.p4GoldCoins = this.getP4GoldCoins();
-        newGameState.p4GoldPts = this.getP4GoldPts();
-        newGameState.p4EmeraldCoins = this.getP4EmeraldCoins();
-        newGameState.p4EmeraldPts = this.getP4EmeraldPts();
-        newGameState.p4SapphireCoins = this.getP4SapphireCoins();
-        newGameState.p4SapphirePts = this.getP4SapphirePts();
-        newGameState.p4RubyCoins = this.getP4RubyCoins();
-        newGameState.p4RubyPts = this.getP4RubyPts();
-        newGameState.p4OnyxCoins = this.getP4OnyxCoins();
-        newGameState.p4OnyxPts = this.getP4OnyxPts();
-        newGameState.p4DiamondCoins = this.getP4DiamondCoins();
-        newGameState.p4PrestigePts = this.getP4OnyxPts();
-        newGameState.p4NumCardsReserved = this.getP4NumCardsReserved();
-        newGameState.p4ReserveCards = new ArrayList<Card>();
-        for (Card card : this.p4ReserveCards) {
-            newGameState.p4ReserveCards.add(new Card(card)); //uses copy constructor in card
+        this.p4GoldCoins = stateToCopy.getP4GoldCoins();
+        this.p4GoldPts = stateToCopy.getP4GoldPts();
+        this.p4EmeraldCoins = stateToCopy.getP4EmeraldCoins();
+        this.p4EmeraldPts = stateToCopy.getP4EmeraldPts();
+        this.p4SapphireCoins = stateToCopy.getP4SapphireCoins();
+        this.p4SapphirePts = stateToCopy.getP4SapphirePts();
+        this.p4RubyCoins = stateToCopy.getP4RubyCoins();
+        this.p4RubyPts = stateToCopy.getP4RubyPts();
+        this.p4OnyxCoins = stateToCopy.getP4OnyxCoins();
+        this.p4OnyxPts = stateToCopy.getP4OnyxPts();
+        this.p4DiamondCoins = stateToCopy.getP4DiamondCoins();
+        this.p4PrestigePts = stateToCopy.getP4OnyxPts();
+        this.p4NumCardsReserved = stateToCopy.getP4NumCardsReserved();
+        this.p4ReserveCards = new ArrayList<Card>();
+        for (Card card : stateToCopy.p4ReserveCards) {
+            this.p4ReserveCards.add(new Card(card)); //uses copy constructor in card
         }
 
         //deep copies for all 3 card stacks
-        newGameState.rank1Stack = new ArrayList<>();
-        for (Card rankCard : this.rank1Stack) {
-            newGameState.rank1Stack.add(new Card(rankCard)); //uses copy constructor in card
+        this.rank1Stack = new ArrayList<>();
+        for (Card rankCard : stateToCopy.rank1Stack) {
+            this.rank1Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
 
-        newGameState.rank2Stack = new ArrayList<>();
-        for (Card rankCard : this.rank2Stack) {
-            newGameState.rank2Stack.add(new Card(rankCard)); //uses copy constructor in card
+        this.rank2Stack = new ArrayList<>();
+        for (Card rankCard : stateToCopy.rank2Stack) {
+            this.rank2Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
 
-        newGameState.rank3Stack = new ArrayList<>();
-        for (Card rankCard : this.rank3Stack) {
-            newGameState.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
+        this.rank3Stack = new ArrayList<>();
+        for (Card rankCard : stateToCopy.rank3Stack) {
+            this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
 
         //TODO make noble class and copy constructor
