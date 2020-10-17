@@ -2,15 +2,6 @@ package edu.up.objectguitry;
 
 import java.util.ArrayList;
 
-import android.graphics.Paint;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 
 
 
