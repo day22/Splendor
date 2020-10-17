@@ -665,7 +665,7 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-
+                if()
                 break;
             case 2:
 
@@ -678,16 +678,31 @@ public class SplendorGameState {
 
                 break;
         }
+        nextPlayerTurn();
         return false;
     }
 
     public boolean cardAction() {
+        this.nextPlayerTurn();
         return false;
     }
 
     public boolean reserveAction() {
+        if(playerid.reserved.size() >= 3) {
+
+            return false;
+        }
+        nextPlayerTurn();
         return false;
     }
+    private void nextPlayerTurn() {
+        if(getPlayerTurn() == 4) {
+            setPlayerTurn(1);
+        } else setPlayerTurn(getPlayerTurn()+1);
+    }
 
+    public void setPlayerTurn(int playerID) {
+        this.playerTurn = playerID;
+    }
 
 }
