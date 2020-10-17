@@ -124,7 +124,7 @@ public class SplendorGameState {
     private int p4NumCardsReserved;
     private ArrayList<Card> p4ReserveCards;
 
-//~~~~~~~~~~~~~~~~~~ Deck Information ~~~~~~~~~~~~~~~ //
+//~~~~~~~~~~~~~~~~~~ Deck and Coin Information ~~~~~~~~~~~~~~~ //
 
     private ArrayList<Card> rank1Stack; //ArrayList of rank1 cards
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
@@ -134,6 +134,13 @@ public class SplendorGameState {
     private Noble noble2;
     private Noble noble3;
     private Noble noble4;
+
+    private int rCoins;
+    private int bCoins;
+    private int gCoins;
+    private int wCoins;
+    private int brCoins;
+    private int yCoins;
 
     /*
      *New Game Constructor
@@ -340,6 +347,14 @@ public class SplendorGameState {
         this.p2Hand = new Hand();
         this.p3Hand = new Hand();
         this.p4Hand = new Hand();
+    }
+
+    public void initializeCoins() {
+        this.rCoins = 7;
+        this.bCoins = 7;
+        this.gCoins = 7;
+        this.wCoins = 7;
+        this.brCoins = 7;
     }
 
     public String getPlayer1Name() {
@@ -645,4 +660,34 @@ public class SplendorGameState {
     public Noble getNoble4() {
         return noble4;
     }
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
+    public boolean coinAction() {
+        switch(this.getPlayerTurn()) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+        }
+        return false;
+    }
+
+    public boolean cardAction() {
+        return false;
+    }
+
+    public boolean reserveAction() {
+        return false;
+    }
+
+
 }
