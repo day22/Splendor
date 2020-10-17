@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState firstInstance = new SplendorGameState();
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
+        
     }
 
     private void updateText(SplendorGameState gameState) {

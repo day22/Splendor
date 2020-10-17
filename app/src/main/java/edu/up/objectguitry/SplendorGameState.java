@@ -671,7 +671,11 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                if()
+                if(has4Red()) {
+
+                }else if(has4Blue()) {
+
+            }
                 break;
             case 2:
 
@@ -694,12 +698,10 @@ public class SplendorGameState {
     }
 
     public boolean reserveAction() {
-        if(playerid.reserved.size() >= 3) {
-
+        if(!playerid.canReserve()) {
             return false;
-        }
-        nextPlayerTurn();
-        return false;
+        } else playerid.addtoHand();
+            return true;
     }
     private void nextPlayerTurn() {
         if(getPlayerTurn() == 4) {
