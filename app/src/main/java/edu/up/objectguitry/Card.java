@@ -38,6 +38,7 @@ public class Card {
     public int getrPrice() {
         return rPrice;
     }
+
     public void setrPrice(int rPrice) {
         this.rPrice = rPrice;
     }
