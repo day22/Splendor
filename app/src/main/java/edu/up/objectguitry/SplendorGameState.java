@@ -669,36 +669,142 @@ public class SplendorGameState {
     }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
+
+    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                coinCheck(this);
+                coinCheck(this, 1);
                 break;
             case 2:
-                coinCheck(this);
+                coinCheck(this, 2);
                 break;
-
             case 3:
-                coinCheck(this);
+                coinCheck(this, 3);
                 break;
             case 4:
-                coinCheck(this);
+                coinCheck(this, 4);
                 break;
         }
         nextPlayerTurn();
         return false;
     }
 
-    public boolean cardAction() {
-        this.nextPlayerTurn();
+    /* TODO: HOW DO WE WANT THEM TO BUY THE CARD. CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
+        - FIND A WAY TO ADD CARD TO HAND; NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
+    */
+    public boolean cardAction(Card cardToBuy) {
+        switch(this.getPlayerTurn()){
+            case 1:
+                if (cardToBuy.getrPrice() <= p1RubyCoins+p1RubyPts &&
+                        cardToBuy.getbPrice() <= p1SapphireCoins+p1SapphirePts &&
+                        cardToBuy.getBrPrice() <= p1OnyxCoins+p1OnyxPts &&
+                        cardToBuy.getwPrice() <= p1DiamondCoins+p1DiamondPts &&
+                        cardToBuy.getgPrice() <= p1EmeraldCoins+p1EmeraldPts)
+                {
+                    if(cardToBuy.getrPrice()-p1RubyPts >= 0) p1RubyCoins = cardToBuy.getrPrice()-p1RubyPts-p1RubyCoins;
+                    if(cardToBuy.getbPrice()-p1SapphirePts >= 0) p1SapphireCoins = cardToBuy.getbPrice()-p1SapphirePts-p1SapphireCoins;
+                    if(cardToBuy.getBrPrice()-p1OnyxPts >= 0) p1OnyxCoins = cardToBuy.getBrPrice()-p1OnyxPts-p1OnyxCoins;
+                    if(cardToBuy.getwPrice()-p1DiamondPts >= 0) p1DiamondCoins = cardToBuy.getwPrice()-p1DiamondPts-p1RubyCoins;
+                    if(cardToBuy.getgPrice()-p1EmeraldPts >= 0) p1EmeraldCoins = cardToBuy.getgPrice()-p1EmeraldPts-p1EmeraldCoins;
+                    //add card to hand
+                    this.nextPlayerTurn();
+                    return true;
+                }
+                break;
+            case 2:
+                if (cardToBuy.getrPrice() <= p2RubyCoins+p2RubyPts &&
+                        cardToBuy.getbPrice() <= p2SapphireCoins+p2SapphirePts &&
+                        cardToBuy.getBrPrice() <= p2OnyxCoins+p2OnyxPts &&
+                        cardToBuy.getwPrice() <= p2DiamondCoins+p2DiamondPts &&
+                        cardToBuy.getgPrice() <= p2EmeraldCoins+p2EmeraldPts)
+                {
+                    if(cardToBuy.getrPrice()-p2RubyPts >= 0) p2RubyCoins = cardToBuy.getrPrice()-p2RubyPts-p2RubyCoins;
+                    if(cardToBuy.getbPrice()-p2SapphirePts >= 0) p2SapphireCoins = cardToBuy.getbPrice()-p2SapphirePts-p2SapphireCoins;
+                    if(cardToBuy.getBrPrice()-p2OnyxPts >= 0) p2OnyxCoins = cardToBuy.getBrPrice()-p2OnyxPts-p2OnyxCoins;
+                    if(cardToBuy.getwPrice()-p2DiamondPts >= 0) p2DiamondCoins = cardToBuy.getwPrice()-p2DiamondPts-p2RubyCoins;
+                    if(cardToBuy.getgPrice()-p2EmeraldPts >= 0) p2EmeraldCoins = cardToBuy.getgPrice()-p2EmeraldPts-p2EmeraldCoins;
+                    //add card to hand
+                    this.nextPlayerTurn();
+                    return true;
+                }
+                break;
+            case 3:
+                if (cardToBuy.getrPrice() <= p3RubyCoins+p3RubyPts &&
+                        cardToBuy.getbPrice() <= p3SapphireCoins+p3SapphirePts &&
+                        cardToBuy.getBrPrice() <= p3OnyxCoins+p3OnyxPts &&
+                        cardToBuy.getwPrice() <= p3DiamondCoins+p3DiamondPts &&
+                        cardToBuy.getgPrice() <= p3EmeraldCoins+p3EmeraldPts)
+                {
+                    if(cardToBuy.getrPrice()-p3RubyPts >= 0) p3RubyCoins = cardToBuy.getrPrice()-p3RubyPts-p3RubyCoins;
+                    if(cardToBuy.getbPrice()-p3SapphirePts >= 0) p3SapphireCoins = cardToBuy.getbPrice()-p3SapphirePts-p3SapphireCoins;
+                    if(cardToBuy.getBrPrice()-p3OnyxPts >= 0) p3OnyxCoins = cardToBuy.getBrPrice()-p3OnyxPts-p3OnyxCoins;
+                    if(cardToBuy.getwPrice()-p3DiamondPts >= 0) p3DiamondCoins = cardToBuy.getwPrice()-p3DiamondPts-p3RubyCoins;
+                    if(cardToBuy.getgPrice()-p3EmeraldPts >= 0) p3EmeraldCoins = cardToBuy.getgPrice()-p3EmeraldPts-p3EmeraldCoins;
+                    //add card to hand
+                    this.nextPlayerTurn();
+                    return true;
+                }
+                break;
+            case 4:
+                if (cardToBuy.getrPrice() <= p4RubyCoins+p4RubyPts &&
+                        cardToBuy.getbPrice() <= p4SapphireCoins+p4SapphirePts &&
+                        cardToBuy.getBrPrice() <= p4OnyxCoins+p4OnyxPts &&
+                        cardToBuy.getwPrice() <= p4DiamondCoins+p4DiamondPts &&
+                        cardToBuy.getgPrice() <= p4EmeraldCoins+p4EmeraldPts)
+                {
+                    if(cardToBuy.getrPrice()-p4RubyPts >= 0) p4RubyCoins = cardToBuy.getrPrice()-p4RubyPts-p4RubyCoins;
+                    if(cardToBuy.getbPrice()-p4SapphirePts >= 0) p4SapphireCoins = cardToBuy.getbPrice()-p4SapphirePts-p4SapphireCoins;
+                    if(cardToBuy.getBrPrice()-p4OnyxPts >= 0) p4OnyxCoins = cardToBuy.getBrPrice()-p4OnyxPts-p4OnyxCoins;
+                    if(cardToBuy.getwPrice()-p4DiamondPts >= 0) p4DiamondCoins = cardToBuy.getwPrice()-p4DiamondPts-p4RubyCoins;
+                    if(cardToBuy.getgPrice()-p4EmeraldPts >= 0) p4EmeraldCoins = cardToBuy.getgPrice()-p4EmeraldPts-p4EmeraldCoins;
+                    //add card to hand
+                    this.nextPlayerTurn();
+                    return true;
+                }
+                break;
+        }
         return false;
     }
 
-    public boolean reserveAction() {
-        if(!playerid.canReserve()) {
-            return false;
-        } else playerid.addtoHand();
-            return true;
+    public boolean reserveAction(int playerID) {
+        switch(playerID){
+            case 1:
+                if (this.p1NumCardsReserved == 3) {
+                    return false;
+                }
+                else {
+                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                }
+                break;
+            case 2:
+                if (this.p2NumCardsReserved == 3) {
+                    return false;
+                }
+                else {
+                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                }
+                break;
+            case 3:
+                if (this.p3NumCardsReserved == 3) {
+                    return false;
+                }
+                else {
+                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                }
+                break;
+            case 4:
+                if (this.p4NumCardsReserved == 3) {
+                    return false;
+                }
+                else {
+                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                }
+                break;
+        }
+        // TODO: need a way to grab cards to add to the Hand of each player
+        this.nextPlayerTurn();
+        return true;
     }
     private void nextPlayerTurn() {
         if(getPlayerTurn() == 4) {
@@ -710,8 +816,13 @@ public class SplendorGameState {
         this.playerTurn = playerID;
     }
 
-    private void coinCheck(SplendorGameState splendorGameState) {
+    //TODO: FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF ITS A LEGAL MOVE
+    private void coinCheck(SplendorGameState splendorGameState, int playerID) {
+        if (this.rCoins >= 4 || this.bCoins >= 4 || this.gCoins >= 4 || this.wCoins >= 4 || this.brCoins >= 4)
+        {
 
+        }
     }
 
 }
+
