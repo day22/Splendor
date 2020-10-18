@@ -271,6 +271,7 @@ public class SplendorGameState {
         //TODO make noble class and copy constructor
         initializeDecks();
         initializeHands();
+        initializeCoins();
     }
 
     //helper method for constructor setting all point values for player to zero
@@ -671,21 +672,17 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                if(has4Red()) {
-
-                }else if(has4Blue()) {
-
-            }
+                coinCheck(this);
                 break;
             case 2:
-
+                coinCheck(this);
                 break;
 
             case 3:
-
+                coinCheck(this);
                 break;
             case 4:
-
+                coinCheck(this);
                 break;
         }
         nextPlayerTurn();
@@ -711,6 +708,10 @@ public class SplendorGameState {
 
     public void setPlayerTurn(int playerID) {
         this.playerTurn = playerID;
+    }
+
+    private void coinCheck(SplendorGameState splendorGameState) {
+
     }
 
 }

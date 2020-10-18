@@ -1,15 +1,16 @@
 package edu.up.objectguitry;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText textBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +27,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState firstInstance = new SplendorGameState();
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
-        
+        //actions
+        SplendorGameState thirdInstance = new SplendorGameState();
+        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
+        updateText(secondInstance);
+        updateText(fourthInstance);
+
     }
 
     private void updateText(SplendorGameState gameState) {
-        textBox.setText(gameState.toString());
+        textBox.append(gameState.toString());
     }
     private void updateText() {
         textBox.setText("");

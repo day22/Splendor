@@ -1,5 +1,7 @@
 package edu.up.objectguitry;
 
+import java.util.ArrayList;
+
 public class Card {
 
     private int rPrice;
@@ -12,6 +14,8 @@ public class Card {
     private int cardLevel;
     private int prestigePoints;
 
+    private static ArrayList<Card> cardLayout;
+
     public Card(int rPrice, int bPrice, int gPrice, int wPrice, int brPrice, int colorGem, int cardLevel, int prestigePoints) {
         this.rPrice = rPrice;
         this.bPrice = bPrice;
@@ -21,6 +25,7 @@ public class Card {
         this.colorGem = colorGem;
         this.cardLevel = cardLevel;
         this.prestigePoints = prestigePoints;
+        cardLayout = new ArrayList<Card>();
     }
 
     //Copy Constructor
