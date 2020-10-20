@@ -689,7 +689,8 @@ public class SplendorGameState {
     * */
     @Override
     public String toString(){
-        String p1,p2,p3,p4;
+        //p refers to player, n refers to noble,
+        String p1,p2,p3,p4,n1,n2,n3,n4,coinToString,returnString;
         p1 = "\nPlayer 1 name: " + player1Name +
                 "\nPlayer 1 Prestige Points: " + p1PrestigePts +
                 "\nPlayer 1 Resource Point values: " +
@@ -766,12 +767,25 @@ public class SplendorGameState {
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
                 " "; //TODO go through reserve card array.
 
+        n1 = "\nNoble 1: " + noble1.toString();
+        n2 = "\nNoble 2: " + noble2.toString();
+        n3 = "\nNoble 2: " + noble3.toString();
+        n4 = "\nNoble 2: " + noble4.toString();
+
+        coinToString = "\nCoins in the Bank: " +
+                "\nGold: "+ goldCoins +
+                "\nEmerald: " + emeraldCoins +
+                "\nSapphire: " + sapphireCoins +
+                "\nRuby: " + rubyCoins +
+                "\nDiamond: " + diamondCoins +
+                "\nOnyx: " + onyxCoins;
 
 
 
 
+        returnString = p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
 
-        return null;
+        return returnString;
     }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
@@ -780,16 +794,16 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                coinCheck(1, );
+              //  coinCheck(1, );
                 break;
             case 2:
-                coinCheck(2);
+               // coinCheck(2);
                 break;
             case 3:
-                coinCheck( 3);
+             //   coinCheck( 3);
                 break;
             case 4:
-                coinCheck(4);
+             //   coinCheck(4);
                 break;
         }
         nextPlayerTurn();

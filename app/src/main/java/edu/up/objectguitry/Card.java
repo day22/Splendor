@@ -40,6 +40,23 @@ public class Card {
         this.prestigePoints = cardToCopy.prestigePoints;
     }
 
+    @Override
+    public String toString(){
+        String ret;
+        ret = "\nCard Level: " + cardLevel +
+                "\nGem Color: " + colorGem +
+                "\nPrestige Points:  " + prestigePoints +
+                "\nPrice of Card: " +
+                "\nRuby: " + rPrice +
+                "\nSapphire: " + bPrice +
+                "\nEmerald: " + gPrice +
+                "\nDiamond: " + wPrice +
+                "\nOnyx: " + brPrice;
+        //TODO cardLayout??
+
+        return ret;
+    }
+
     public int getrPrice() {
         return rPrice;
     }
