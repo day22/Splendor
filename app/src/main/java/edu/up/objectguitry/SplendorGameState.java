@@ -135,12 +135,12 @@ public class SplendorGameState {
     private Noble noble3;
     private Noble noble4;
 
-    private int rCoins;
-    private int bCoins;
-    private int gCoins;
-    private int wCoins;
-    private int brCoins;
-    private int yCoins;
+    private int rubyCoins;
+    private int sapphireCoins;
+    private int emeraldCoins;
+    private int diamondCoins;
+    private int onyxCoins;
+    private int goldCoins;
 
     /*
      *New Game Constructor
@@ -363,11 +363,12 @@ public class SplendorGameState {
     }
 
     public void initializeCoins() {
-        this.rCoins = 7;
-        this.bCoins = 7;
-        this.gCoins = 7;
-        this.wCoins = 7;
-        this.brCoins = 7;
+        this.rubyCoins = 7;
+        this.sapphireCoins = 7;
+        this.emeraldCoins = 7;
+        this.diamondCoins = 7;
+        this.onyxCoins = 7;
+        this.goldCoins = 5;
     }
 
     public String getPlayer1Name() {
@@ -680,7 +681,7 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                coinCheck(1);
+                coinCheck(1, );
                 break;
             case 2:
                 coinCheck(2);
@@ -784,7 +785,7 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                    if (this.goldCoins > 0) this.p1GoldCoins++; this.goldCoins--;
                     this.p1Hand.addToReserved(cardToReserve);
                 }
                 break;
@@ -793,7 +794,7 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p2GoldCoins++; this.gCoins--;
+                    if (this.goldCoins > 0) this.p2GoldCoins++; this.goldCoins--;
                     this.p2Hand.addToReserved(cardToReserve);
                 }
                 break;
@@ -802,7 +803,7 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p3GoldCoins++; this.gCoins--;
+                    if (this.goldCoins > 0) this.p3GoldCoins++; this.goldCoins--;
                     this.p3Hand.addToReserved(cardToReserve);
                 }
                 break;
@@ -811,7 +812,7 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p4GoldCoins++; this.gCoins--;
+                    if (this.goldCoins > 0) this.p4GoldCoins++; this.goldCoins--;
                     this.p4Hand.addToReserved(cardToReserve);
                 }
                 break;
@@ -831,24 +832,77 @@ public class SplendorGameState {
     }
 
     //TODO: FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF ITS A LEGAL MOVE
-    private boolean coinCheck(int playerID) {
+    private boolean coinCheck(int playerID, int coinColor, int coinColor2, int coinColor3, boolean coinPileCheck) {
+        boolean flag = coinPileCheck()[coinColor];
         switch (playerID) {
             case 1:
-                if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10) return false;
+                if(p1coinCountBool()) {
 
+                }
                 break;
             case 2:
-                if(this.p2DiamondCoins+this.p2EmeraldCoins+this.p2OnyxCoins+this.p2RubyCoins+this.p2SapphireCoins+this.p2GoldCoins >= 10) return false;
+                if(p2coinCointBool()) {
+
+                }
                 break;
             case 3:
-                if(this.p3DiamondCoins+this.p3EmeraldCoins+this.p3OnyxCoins+this.p3RubyCoins+this.p3SapphireCoins+this.p3GoldCoins >= 10) return false;
+                if(p3coinCointBool()) {
+
+                }
                 break;
             case 4:
-                if(this.p4DiamondCoins+this.p4EmeraldCoins+this.p4OnyxCoins+this.p4RubyCoins+this.p4SapphireCoins+this.p4GoldCoins >= 10) return false;
+                if(p4coinCointBool()) {
+
+                }
                 break;
         }
         return false;
     }
 
+
+    private boolean p1coinCountBool() {
+        if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10)
+            return false;
+        return true;
+    }
+    private boolean p2coinCointBool() {
+        if(this.p2DiamondCoins+this.p2EmeraldCoins+this.p2OnyxCoins+this.p2RubyCoins+this.p2SapphireCoins+this.p2GoldCoins >= 10)
+            return false;
+        return true;
+    }
+
+    private boolean p3coinCointBool() {
+        if(this.p3DiamondCoins+this.p3EmeraldCoins+this.p3OnyxCoins+this.p3RubyCoins+this.p3SapphireCoins+this.p3GoldCoins >= 10)
+            return false;
+        return true;
+    }
+
+    private boolean p4coinCointBool() {
+        if(this.p4DiamondCoins+this.p4EmeraldCoins+this.p4OnyxCoins+this.p4RubyCoins+this.p4SapphireCoins+this.p4GoldCoins >= 10)
+            return false;
+        return true;
+    }
+
+    private boolean[] coinPileCheck() {
+        boolean[] coinPiles = {(this.rubyCoins >=4), (this.sapphireCoins >= 4), this.emeraldCoins >= 4, this.diamondCoins >= 4, this.onyxCoins >= 4};
+        return coinPiles;
+    }
+
+    private void individualCoinAction(int playerID, int coinColor) {
+        switch(playerID) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+        }
+    }
 }
 
