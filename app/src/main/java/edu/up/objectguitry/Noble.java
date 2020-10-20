@@ -29,6 +29,20 @@ public class Noble {
         this.prestigePoints = nobelToCopy.prestigePoints;
     }
 
+    @Override
+    public String toString(){
+        String ret;
+        ret = "\nPrestige Points:  " + prestigePoints +
+                "\nPrice of Noble: " +
+                "\nRuby: " + rPrice +
+                "\nSapphire: " + bPrice +
+                "\nEmerald: " + gPrice +
+                "\nDiamond: " + wPrice +
+                "\nOnyx: " + brPrice;
+
+
+        return ret;
+    }
 
     public int getrPrice() {
         return rPrice;

@@ -24,17 +24,15 @@ import com.opencsv.CSVReader;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText textBox;
-    private Button testButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
-
-        this.textBox = findViewById(R.id.printVals);
-        this.testButton = findViewById(R.id.test_run);
-        this.testButton.setOnClickListener(this);
-
+        Log.d("onCreate","here");
+        EditText textBox = findViewById(R.id.printVals);
+        Button testButton = findViewById(R.id.test_run);
+        testButton.setOnClickListener(this);
     }
 
     @Override
@@ -43,25 +41,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
 
+        Log.d("onClick","here");
         updateText();
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
-        updateText(firstInstance.);
+        updateText(firstInstance);
         //actions
-//        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
-//        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
-//        updateText(secondInstance);
-//        updateText(fourthInstance);
-
+        SplendorGameState thirdInstance = new SplendorGameState();
+        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
+        updateText(secondInstance);
+        updateText(fourthInstance);
     }
 
     private void updateText(SplendorGameState gameState) {
-        textBox.setText(gameState.toString());
+        EditText textBox = findViewById(R.id.printVals);
+        textBox.append(gameState.toString());
     }
     private void updateText() {
-        this.textBox.setText("");
-    }
-    private void updateText(String text) {
-        textBox.setText(""+text);
+        EditText textBox = findViewById(R.id.printVals);
+        textBox.setText("");
+        Log.d("updatetext no params","here");
     }
 }
