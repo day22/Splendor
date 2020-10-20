@@ -156,6 +156,12 @@ public class SplendorGameState {
     private Hand p3Hand;
     private Hand p4Hand;
 
+//~~~~~~~~~~~~~~~~~~~~~ Game State Specific Variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    private int stack1Iterator;
+    private int stack2Iterator;
+    private int stack3Iterator;
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     public SplendorGameState() {
@@ -674,24 +680,24 @@ public class SplendorGameState {
     public boolean coinAction() {
         switch(this.getPlayerTurn()) {
             case 1:
-                coinCheck(this, 1);
+                coinCheck(1);
                 break;
             case 2:
-                coinCheck(this, 2);
+                coinCheck(2);
                 break;
             case 3:
-                coinCheck(this, 3);
+                coinCheck( 3);
                 break;
             case 4:
-                coinCheck(this, 4);
+                coinCheck(4);
                 break;
         }
         nextPlayerTurn();
         return false;
     }
 
-    /* TODO: HOW DO WE WANT THEM TO BUY THE CARD. CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
-        - FIND A WAY TO ADD CARD TO HAND; NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
+    /* TODO: HOW DO WE WANT THEM TO BUY THE CARD? CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
+        - NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
     */
     public boolean cardAction(Card cardToBuy) {
         switch(this.getPlayerTurn()){
@@ -707,7 +713,8 @@ public class SplendorGameState {
                     if(cardToBuy.getBrPrice()-p1OnyxPts >= 0) p1OnyxCoins = cardToBuy.getBrPrice()-p1OnyxPts-p1OnyxCoins;
                     if(cardToBuy.getwPrice()-p1DiamondPts >= 0) p1DiamondCoins = cardToBuy.getwPrice()-p1DiamondPts-p1RubyCoins;
                     if(cardToBuy.getgPrice()-p1EmeraldPts >= 0) p1EmeraldCoins = cardToBuy.getgPrice()-p1EmeraldPts-p1EmeraldCoins;
-                    //add card to hand
+                    //add card to hand -> maybe fill new card in place of the bought card?
+                    this.p1Hand.addToHand(cardToBuy);
                     this.nextPlayerTurn();
                     return true;
                 }
@@ -724,7 +731,8 @@ public class SplendorGameState {
                     if(cardToBuy.getBrPrice()-p2OnyxPts >= 0) p2OnyxCoins = cardToBuy.getBrPrice()-p2OnyxPts-p2OnyxCoins;
                     if(cardToBuy.getwPrice()-p2DiamondPts >= 0) p2DiamondCoins = cardToBuy.getwPrice()-p2DiamondPts-p2RubyCoins;
                     if(cardToBuy.getgPrice()-p2EmeraldPts >= 0) p2EmeraldCoins = cardToBuy.getgPrice()-p2EmeraldPts-p2EmeraldCoins;
-                    //add card to hand
+                    //add card to hand -> maybe fill new card in place of the bought card?
+                    this.p2Hand.addToHand(cardToBuy);
                     this.nextPlayerTurn();
                     return true;
                 }
@@ -741,7 +749,8 @@ public class SplendorGameState {
                     if(cardToBuy.getBrPrice()-p3OnyxPts >= 0) p3OnyxCoins = cardToBuy.getBrPrice()-p3OnyxPts-p3OnyxCoins;
                     if(cardToBuy.getwPrice()-p3DiamondPts >= 0) p3DiamondCoins = cardToBuy.getwPrice()-p3DiamondPts-p3RubyCoins;
                     if(cardToBuy.getgPrice()-p3EmeraldPts >= 0) p3EmeraldCoins = cardToBuy.getgPrice()-p3EmeraldPts-p3EmeraldCoins;
-                    //add card to hand
+                    //add card to hand -> maybe fill new card in place of the bought card?
+                    this.p3Hand.addToHand(cardToBuy);
                     this.nextPlayerTurn();
                     return true;
                 }
@@ -758,7 +767,8 @@ public class SplendorGameState {
                     if(cardToBuy.getBrPrice()-p4OnyxPts >= 0) p4OnyxCoins = cardToBuy.getBrPrice()-p4OnyxPts-p4OnyxCoins;
                     if(cardToBuy.getwPrice()-p4DiamondPts >= 0) p4DiamondCoins = cardToBuy.getwPrice()-p4DiamondPts-p4RubyCoins;
                     if(cardToBuy.getgPrice()-p4EmeraldPts >= 0) p4EmeraldCoins = cardToBuy.getgPrice()-p4EmeraldPts-p4EmeraldCoins;
-                    //add card to hand
+                    //add card to hand -> maybe fill new card in place of the bought card?
+                    this.p4Hand.addToHand(cardToBuy);
                     this.nextPlayerTurn();
                     return true;
                 }
@@ -767,7 +777,7 @@ public class SplendorGameState {
         return false;
     }
 
-    public boolean reserveAction(int playerID) {
+    public boolean reserveAction(int playerID , Card cardToReserve) {
         switch(playerID){
             case 1:
                 if (this.p1NumCardsReserved == 3) {
@@ -775,6 +785,7 @@ public class SplendorGameState {
                 }
                 else {
                     if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                    this.p1Hand.addToReserved(cardToReserve);
                 }
                 break;
             case 2:
@@ -782,7 +793,8 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                    if (this.gCoins > 0) this.p2GoldCoins++; this.gCoins--;
+                    this.p2Hand.addToReserved(cardToReserve);
                 }
                 break;
             case 3:
@@ -790,7 +802,8 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                    if (this.gCoins > 0) this.p3GoldCoins++; this.gCoins--;
+                    this.p3Hand.addToReserved(cardToReserve);
                 }
                 break;
             case 4:
@@ -798,14 +811,15 @@ public class SplendorGameState {
                     return false;
                 }
                 else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+                    if (this.gCoins > 0) this.p4GoldCoins++; this.gCoins--;
+                    this.p4Hand.addToReserved(cardToReserve);
                 }
                 break;
         }
-        // TODO: need a way to grab cards to add to the Hand of each player
         this.nextPlayerTurn();
         return true;
     }
+
     private void nextPlayerTurn() {
         if(getPlayerTurn() == 4) {
             setPlayerTurn(1);
@@ -817,11 +831,23 @@ public class SplendorGameState {
     }
 
     //TODO: FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF ITS A LEGAL MOVE
-    private void coinCheck(SplendorGameState splendorGameState, int playerID) {
-        if (this.rCoins >= 4 || this.bCoins >= 4 || this.gCoins >= 4 || this.wCoins >= 4 || this.brCoins >= 4)
-        {
+    private boolean coinCheck(int playerID) {
+        switch (playerID) {
+            case 1:
+                if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10) return false;
 
+                break;
+            case 2:
+                if(this.p2DiamondCoins+this.p2EmeraldCoins+this.p2OnyxCoins+this.p2RubyCoins+this.p2SapphireCoins+this.p2GoldCoins >= 10) return false;
+                break;
+            case 3:
+                if(this.p3DiamondCoins+this.p3EmeraldCoins+this.p3OnyxCoins+this.p3RubyCoins+this.p3SapphireCoins+this.p3GoldCoins >= 10) return false;
+                break;
+            case 4:
+                if(this.p4DiamondCoins+this.p4EmeraldCoins+this.p4OnyxCoins+this.p4RubyCoins+this.p4SapphireCoins+this.p4GoldCoins >= 10) return false;
+                break;
         }
+        return false;
     }
 
 }
