@@ -1,5 +1,7 @@
 package edu.up.objectguitry;
 
+import android.widget.TextView;
+
 import java.util.ArrayList;
 
 
@@ -666,6 +668,103 @@ public class SplendorGameState {
 
     public Noble getNoble4() {
         return noble4;
+    }
+    //TODO
+/*~~~~~~~~~~~~~~~~~~~~~~~toString~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    //Returns a String to be printed by TextView
+    /* Includes :
+    p1,p2,p3,p4  ARRAY: reserve cards
+    nobles 1-4
+    rank 1-3 stack ARRAY
+    p1-4 hands  ARRAY
+    coins in bank
+
+    * */
+    @Override
+    public String toString(){
+        String p1,p2,p3,p4;
+        p1 = "\nPlayer 1 name: " + player1Name +
+                "\nPlayer 1 Prestige Points: " + p1PrestigePts +
+                "\nPlayer 1 Resource Point values: " +
+                "\nGold: "+ p1GoldPts +
+                "\nEmerald: " + p1EmeraldPts +
+                "\nSapphire: " + p1SapphirePts +
+                "\nRuby: " + p1RubyPts +
+                "\nDiamond: " + p1DiamondPts +
+                "\nOnyx: " + p1OnyxPts +
+                "Player 1 Coin Values: " +
+                "\nGold: "+ p1GoldCoins +
+                "\nEmerald: " + p1EmeraldCoins +
+                "\nSapphire: " + p1SapphireCoins +
+                "\nRuby: " + p1RubyCoins +
+                "\nDiamond: " + p1DiamondCoins +
+                "\nOnyx: " + p1OnyxCoins +
+                "\nPlayer 1 number of Cards reserved: " + p1NumCardsReserved+
+                " "; //TODO go through reserve card array.
+
+        p2 = "\nPlayer 2 name: " + player2Name +
+                "\nPlayer 2 Prestige Points: " + p2PrestigePts +
+                "\nPlayer 2 Resource Point values: " +
+                "\nGold: "+ p2GoldPts +
+                "\nEmerald: " + p2EmeraldPts +
+                "\nSapphire: " + p2SapphirePts +
+                "\nRuby: " + p2RubyPts +
+                "\nDiamond: " + p2DiamondPts +
+                "\nOnyx: " + p2OnyxPts +
+                "Player 2 Coin Values: " +
+                "\nGold: "+ p2GoldCoins +
+                "\nEmerald: " + p2EmeraldCoins +
+                "\nSapphire: " + p2SapphireCoins +
+                "\nRuby: " + p2RubyCoins +
+                "\nDiamond: " + p2DiamondCoins +
+                "\nOnyx: " + p2OnyxCoins +
+                "\nPlayer 2 number of Cards reserved: " + p2NumCardsReserved+
+                " "; //TODO go through reserve card array.
+
+        p3 = "\nPlayer 3 name: " + player3Name +
+                "\nPlayer 3 Prestige Points: " + p3PrestigePts +
+                "\nPlayer 3 Resource Point values: " +
+                "\nGold: "+ p3GoldPts +
+                "\nEmerald: " + p3EmeraldPts +
+                "\nSapphire: " + p3SapphirePts +
+                "\nRuby: " + p3RubyPts +
+                "\nDiamond: " + p3DiamondPts +
+                "\nOnyx: " + p3OnyxPts +
+                "Player 3 Coin Values: " +
+                "\nGold: "+ p3GoldCoins +
+                "\nEmerald: " + p3EmeraldCoins +
+                "\nSapphire: " + p3SapphireCoins +
+                "\nRuby: " + p3RubyCoins +
+                "\nDiamond: " + p3DiamondCoins +
+                "\nOnyx: " + p3OnyxCoins +
+                "\nPlayer 3 number of Cards reserved: " + p3NumCardsReserved+
+                " "; //TODO go through reserve card array.
+
+        p4 = "\nPlayer 4 name: " + player4Name +
+                "\nPlayer 4 Prestige Points: " + p4PrestigePts +
+                "\nPlayer 4 Resource Point values: " +
+                "\nGold: "+ p4GoldPts +
+                "\nEmerald: " + p4EmeraldPts +
+                "\nSapphire: " + p4SapphirePts +
+                "\nRuby: " + p4RubyPts +
+                "\nDiamond: " + p4DiamondPts +
+                "\nOnyx: " + p4OnyxPts +
+                "Player 4 Coin Values: " +
+                "\nGold: "+ p4GoldCoins +
+                "\nEmerald: " + p4EmeraldCoins +
+                "\nSapphire: " + p4SapphireCoins +
+                "\nRuby: " + p4RubyCoins +
+                "\nDiamond: " + p4DiamondCoins +
+                "\nOnyx: " + p4OnyxCoins +
+                "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
+                " "; //TODO go through reserve card array.
+
+
+
+
+
+
+        return null;
     }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
