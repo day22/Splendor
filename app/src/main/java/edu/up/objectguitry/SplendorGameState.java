@@ -287,7 +287,7 @@ public class SplendorGameState {
         }
 
         //TODO make noble class and copy constructor
-        initializeDecks();
+        //initializeDecks();
         initializeHands();
         initializeCoins();
     }
@@ -377,8 +377,8 @@ public class SplendorGameState {
                 //split by ,
                 String[] tokens = line.split(",");
                 Card card = new Card();
-                card.setPrestigePoints(Integer.parseInt(tokens[0]));
-                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setColorGem(Integer.parseInt(tokens[0]));
+                card.setPrestigePoints(Integer.parseInt(tokens[1]));
                 card.setwPrice(Integer.parseInt(tokens[2]));
                 card.setbPrice(Integer.parseInt(tokens[3]));
                 card.setgPrice(Integer.parseInt(tokens[4]));
@@ -452,11 +452,11 @@ public class SplendorGameState {
     }
 
     public void initializeCoins() {
-        this.rubyCoinStack = 7;
-        this.sapphireCoinStack = 7;
-        this.emeraldCoinStack = 7;
-        this.diamondCoinStack = 7;
-        this.onyxCoinStack = 7;
+        this.rubyCoins = 7;
+        this.sapphireCoins = 7;
+        this.emeraldCoins = 7;
+        this.diamondCoins = 7;
+        this.onyxCoins = 7;
     }
 
     public String getPlayer1Name() {
@@ -878,21 +878,21 @@ public class SplendorGameState {
 
     /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
     public boolean coinAction() {
-        switch(this.getPlayerTurn()) {
-            case 1:
-                coinCheck(this, 1);
-                break;
-            case 2:
-                coinCheck(this, 2);
-                break;
-            case 3:
-                coinCheck(this, 3);
-                break;
-            case 4:
-                coinCheck(this, 4);
-                break;
-        }
-        nextPlayerTurn();
+//        switch(this.getPlayerTurn()) {
+////            case 1:
+////                coinCheck(this, 1);
+////                break;
+////            case 2:
+////                coinCheck(this, 2);
+////                break;
+////            case 3:
+////                coinCheck(this, 3);
+////                break;
+////            case 4:
+////                coinCheck(this, 4);
+////                break;
+////        }
+////        nextPlayerTurn();
         return false;
     }
 

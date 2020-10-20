@@ -9,14 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.Buffer;
-import java.nio.charset.Charset;
+
 
 import com.opencsv.CSVReader;
 
@@ -47,10 +42,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
         //actions
-        SplendorGameState thirdInstance = new SplendorGameState();
-        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
-        updateText(secondInstance);
-        updateText(fourthInstance);
+//        SplendorGameState thirdInstance = new SplendorGameState();
+//        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
+//        updateText(secondInstance);
+//        updateText(fourthInstance);
     }
 
     private void updateText(SplendorGameState gameState) {
