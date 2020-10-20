@@ -170,6 +170,7 @@ public class SplendorGameState {
     public SplendorGameState(InputStream rank1, InputStream rank2, InputStream rank3) {
         initializePlayerPointValues();
         initializeDecks(rank1, rank2, rank3); //unfinished
+        initializeHands();
     }
 
     /*
@@ -277,7 +278,7 @@ public class SplendorGameState {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
 
-        initializeDecks();
+        //initializeDecks();
         initializeHands();
         initializeCoins();
     }
@@ -437,6 +438,9 @@ public class SplendorGameState {
         }
     }
 
+    public String handToString() {
+        
+    }
 
 
     public void initializeHands() {

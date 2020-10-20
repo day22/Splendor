@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
 
-        EditText textBox = findViewById(R.id.printVals);
+        this.textBox = findViewById(R.id.printVals);
         this.testButton = findViewById(R.id.test_run);
         this.testButton.setOnClickListener(this);
 
@@ -46,40 +46,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         updateText();
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
-        updateText(firstInstance);
+        updateText(firstInstance.);
         //actions
-        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
-        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
-        updateText(secondInstance);
-        updateText(fourthInstance);
+//        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
+//        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
+//        updateText(secondInstance);
+//        updateText(fourthInstance);
 
     }
 
     private void updateText(SplendorGameState gameState) {
-        textBox.append(gameState.toString());
+        textBox.setText(gameState.toString());
     }
     private void updateText() {
-        textBox.setText("");
+        this.textBox.setText("");
     }
     private void updateText(String text) {
         textBox.setText(""+text);
-    }
-    private void readdataTest() {
-        InputStream rank1 = getResources().openRawResource(R.raw.rank1);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(rank1, Charset.forName("UTF-8"))
-        );
-
-        String line = "";
-        try {
-            while((line = reader.readLine()) != null) {
-                //split by ,
-                String[] tokens = line.split(",");
-            }
-        } catch (IOException e) {
-            Log.wtf("MyActivity","Error reading data file " + line, e);
-        }
-
-
     }
 }
