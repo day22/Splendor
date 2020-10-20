@@ -132,7 +132,7 @@ public class SplendorGameState {
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
     private ArrayList<Card> rank3Stack; //ArrayList of rank3 cards
 
-    private Noble noble1;
+    private Noble noble1;// = new Noble(1,2,3,4,5,15); //used for tostring tests
     private Noble noble2;
     private Noble noble3;
     private Noble noble4;
@@ -169,6 +169,9 @@ public class SplendorGameState {
     public SplendorGameState() {
         initializePlayerPointValues();
         initializeDecks(); //unfinished
+        initializeHands();
+        initializeCoins();
+
     }
 
     /*
@@ -690,8 +693,8 @@ public class SplendorGameState {
     @Override
     public String toString(){
         //p refers to player, n refers to noble,
-        String p1,p2,p3,p4,n1,n2,n3,n4,coinToString,returnString;
-        p1 = "\nPlayer 1 name: " + player1Name +
+        String p1,p2,p3,p4,n1,n2,n3,n4,coinToString,returnString, currGame;
+        p1 = "\n\nPlayer 1 name: " + player1Name +
                 "\nPlayer 1 Prestige Points: " + p1PrestigePts +
                 "\nPlayer 1 Resource Point values: " +
                 "\nGold: "+ p1GoldPts +
@@ -710,7 +713,7 @@ public class SplendorGameState {
                 "\nPlayer 1 number of Cards reserved: " + p1NumCardsReserved+
                 " "; //TODO go through reserve card array.
 
-        p2 = "\nPlayer 2 name: " + player2Name +
+        p2 = "\n\nPlayer 2 name: " + player2Name +
                 "\nPlayer 2 Prestige Points: " + p2PrestigePts +
                 "\nPlayer 2 Resource Point values: " +
                 "\nGold: "+ p2GoldPts +
@@ -729,7 +732,7 @@ public class SplendorGameState {
                 "\nPlayer 2 number of Cards reserved: " + p2NumCardsReserved+
                 " "; //TODO go through reserve card array.
 
-        p3 = "\nPlayer 3 name: " + player3Name +
+        p3 = "\n\nPlayer 3 name: " + player3Name +
                 "\nPlayer 3 Prestige Points: " + p3PrestigePts +
                 "\nPlayer 3 Resource Point values: " +
                 "\nGold: "+ p3GoldPts +
@@ -748,7 +751,7 @@ public class SplendorGameState {
                 "\nPlayer 3 number of Cards reserved: " + p3NumCardsReserved+
                 " "; //TODO go through reserve card array.
 
-        p4 = "\nPlayer 4 name: " + player4Name +
+        p4 = "\n\nPlayer 4 name: " + player4Name +
                 "\nPlayer 4 Prestige Points: " + p4PrestigePts +
                 "\nPlayer 4 Resource Point values: " +
                 "\nGold: "+ p4GoldPts +
@@ -766,13 +769,13 @@ public class SplendorGameState {
                 "\nOnyx: " + p4OnyxCoins +
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
                 " "; //TODO go through reserve card array.
-
-        n1 = "\nNoble 1: " + noble1.toString();
-        n2 = "\nNoble 2: " + noble2.toString();
-        n3 = "\nNoble 2: " + noble3.toString();
-        n4 = "\nNoble 2: " + noble4.toString();
-
-        coinToString = "\nCoins in the Bank: " +
+/*
+        n1 = "\n\nNoble 1: " + noble1.toString();
+        n2 = "\n\nNoble 2: " + noble2.toString();
+        n3 = "\n\nNoble 2: " + noble3.toString();
+        n4 = "\n\nNoble 2: " + noble4.toString();
+    */
+        coinToString = "\n\nCoins in the Bank: " +
                 "\nGold: "+ goldCoins +
                 "\nEmerald: " + emeraldCoins +
                 "\nSapphire: " + sapphireCoins +
@@ -780,10 +783,10 @@ public class SplendorGameState {
                 "\nDiamond: " + diamondCoins +
                 "\nOnyx: " + onyxCoins;
 
+        currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
-
-
-        returnString = p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
+// + n2 + n3 + n4
+        returnString = currGame + p1 + p2 + p3 + p4 + coinToString;
 
         return returnString;
     }
