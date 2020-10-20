@@ -11,6 +11,12 @@ public class Card {
     private int brPrice;
 
     private int colorGem;
+    private final int BLACKGEM = 1;
+    private final int BLUEGEM = 2;
+    private final int WHITEGEM = 3;
+    private final int GREENGEM = 4;
+    private final int REDGEM = 5;
+
     private int cardLevel;
     private int prestigePoints;
 
@@ -26,6 +32,17 @@ public class Card {
         this.cardLevel = cardLevel;
         this.prestigePoints = prestigePoints;
         cardLayout = new ArrayList<Card>();
+    }
+    //card factory constructor
+    public Card() {
+        this.rPrice = 0;
+        this.bPrice = 0;
+        this.gPrice = 0;
+        this.wPrice = 0;
+        this.brPrice = 0;
+        this.colorGem = 0;
+        this.cardLevel = 0;
+        this.prestigePoints = 0;
     }
 
     //Copy Constructor

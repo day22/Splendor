@@ -1,5 +1,14 @@
 package edu.up.objectguitry;
 
+import android.inputmethodservice.InputMethodService;
+import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 
@@ -135,19 +144,14 @@ public class SplendorGameState {
     private Noble noble3;
     private Noble noble4;
 
-    private int rCoins;
-    private int bCoins;
-    private int gCoins;
-    private int wCoins;
-    private int brCoins;
+    private int rubyCoinStack;
+    private int sapphireCoinStack;
+    private int emeraldCoinStack;
+    private int diamondCoinStack;
+    private int onyxCoinStack;
     private int yCoins;
 
-    /*
-     *New Game Constructor
-     * TODO
-     *  -figure out  file reading for initializing deck array lists
-     *  -possibly add noble/card visibility boolean instance variables
-     */
+
 //~~~~~~~~~~~~~~~~~~ Hand Informtion ~~~~~~~~~~~~~ //
 
     //all players' hands
@@ -157,10 +161,15 @@ public class SplendorGameState {
     private Hand p4Hand;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-    public SplendorGameState() {
+/*
+ *New Game Constructor
+ * TODO
+ *  -figure out  file reading for initializing deck array lists
+ *  -possibly add noble/card visibility boolean instance variables
+ */
+    public SplendorGameState(InputStream rank1, InputStream rank2, InputStream rank3) {
         initializePlayerPointValues();
-        initializeDecks(); //unfinished
+        initializeDecks(rank1, rank2, rank3); //unfinished
     }
 
     /*
@@ -268,7 +277,6 @@ public class SplendorGameState {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
 
-        //TODO make noble class and copy constructor
         initializeDecks();
         initializeHands();
         initializeCoins();
@@ -336,6 +344,9 @@ public class SplendorGameState {
         this.p4PrestigePts = 0;
         this.p4NumCardsReserved = 0;
         this.p4ReserveCards = new ArrayList<Card>();
+        
+        //initialize coin stack values
+    
     }
 
     //TODO file reading from three rank text files
@@ -343,11 +354,90 @@ public class SplendorGameState {
      * reads input from text files into three array lists then shuffles deck
      *
      */
-    public void initializeDecks() {
+    public void initializeDecks(InputStream rank1, InputStream rank2, InputStream rank3) {
         this.rank1Stack = new ArrayList<Card>();
         this.rank2Stack = new ArrayList<Card>();
         this.rank3Stack = new ArrayList<Card>();
+
+        //reading data for rank 1
+        BufferedReader rank1Reader = new BufferedReader(
+                new InputStreamReader(rank1, Charset.forName("UTF-8"))
+        );
+
+        String line = "";
+        try {
+            while((line = rank1Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setPrestigePoints(Integer.parseInt(tokens[0]));
+                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(1);
+                this.rank1Stack.add(card);
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
+
+        //reading data for rank 2
+        BufferedReader rank2Reader = new BufferedReader(
+                new InputStreamReader(rank2, Charset.forName("UTF-8"))
+        );
+
+        line = "";
+        try {
+            while((line = rank2Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setPrestigePoints(Integer.parseInt(tokens[0]));
+                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(2);
+                this.rank2Stack.add(card);
+
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
+
+        //reading data for rank 3
+        BufferedReader rank3Reader = new BufferedReader(
+                new InputStreamReader(rank1, Charset.forName("UTF-8"))
+        );
+
+        line = "";
+        try {
+            while((line = rank3Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setPrestigePoints(Integer.parseInt(tokens[0]));
+                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(3);
+                this.rank3Stack.add(card);
+
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
     }
+
+
 
     public void initializeHands() {
         this.p1Hand = new Hand();
@@ -357,11 +447,11 @@ public class SplendorGameState {
     }
 
     public void initializeCoins() {
-        this.rCoins = 7;
-        this.bCoins = 7;
-        this.gCoins = 7;
-        this.wCoins = 7;
-        this.brCoins = 7;
+        this.rubyCoinStack = 7;
+        this.sapphireCoinStack = 7;
+        this.emeraldCoinStack = 7;
+        this.diamondCoinStack = 7;
+        this.onyxCoinStack = 7;
     }
 
     public String getPlayer1Name() {
@@ -768,40 +858,40 @@ public class SplendorGameState {
     }
 
     public boolean reserveAction(int playerID) {
-        switch(playerID){
-            case 1:
-                if (this.p1NumCardsReserved == 3) {
-                    return false;
-                }
-                else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
-                }
-                break;
-            case 2:
-                if (this.p2NumCardsReserved == 3) {
-                    return false;
-                }
-                else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
-                }
-                break;
-            case 3:
-                if (this.p3NumCardsReserved == 3) {
-                    return false;
-                }
-                else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
-                }
-                break;
-            case 4:
-                if (this.p4NumCardsReserved == 3) {
-                    return false;
-                }
-                else {
-                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
-                }
-                break;
-        }
+//        switch(playerID){
+//            case 1:
+//                if (this.p1NumCardsReserved == 3) {
+//                    return false;
+//                }
+//                else {
+//                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+//                }
+//                break;
+//            case 2:
+//                if (this.p2NumCardsReserved == 3) {
+//                    return false;
+//                }
+//                else {
+//                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+//                }
+//                break;
+//            case 3:
+//                if (this.p3NumCardsReserved == 3) {
+//                    return false;
+//                }
+//                else {
+//                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+//                }
+//                break;
+//            case 4:
+//                if (this.p4NumCardsReserved == 3) {
+//                    return false;
+//                }
+//                else {
+//                    if (this.gCoins > 0) this.p1GoldCoins++; this.gCoins--;
+//                }
+//                break;
+//        }
         // TODO: need a way to grab cards to add to the Hand of each player
         this.nextPlayerTurn();
         return true;
@@ -818,7 +908,7 @@ public class SplendorGameState {
 
     //TODO: FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF ITS A LEGAL MOVE
     private void coinCheck(SplendorGameState splendorGameState, int playerID) {
-        if (this.rCoins >= 4 || this.bCoins >= 4 || this.gCoins >= 4 || this.wCoins >= 4 || this.brCoins >= 4)
+        if (this.rubyCoinStack >= 4 || this.sapphireCoinStack >= 4 || this.emeraldCoinStack >= 4 || this.diamondCoinStack >= 4 || this.onyxCoinStack >= 4)
         {
 
         }
