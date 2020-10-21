@@ -512,16 +512,33 @@ public class SplendorGameState {
     /* Includes :
     p1,p2,p3,p4  ARRAY: reserve cards
     nobles 1-4
-    rank 1-3 stack ARRAY
+    Board: rank 1-3
+    All Cards
     p1-4 hands  ARRAY
     coins in bank
 
     * */
     @Override
     public String toString(){
-        //p refers to player, n refers to noble,
-        String p1,p2,p3,p4,n1,n2,n3,n4,coinToString,returnString, currGame;
+        //p refers to player, n refers to noble, TS refers to ToString
+        String p1, p2, p3, p4, playerTS, n1, n2, n3, n4, nobleTS, coinToString, returnString, newGame, GameInfoTS, allCardsTS;
+        String p1_Reserve = null;
+        String p2_Reserve = null;
+        String p3_Reserve = null;
+        String p4_Reserve = null;
+        String p1HandTS = null;
+        String p2HandTS = null;
+        String p3HandTS = null;
+        String p4HandTS = null;
+        String rank1Cards = null;
+        String rank2Cards = null;
+        String rank3Cards = null;
+        String currBoardTS = null;
+
+        newGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
+
         p1 = "\n\nPlayer 1 name: " + player1Name +
+                "\nPlayer 1 turn ID: " + PLAYER1ID +
                 "\nPlayer 1 Prestige Points: " + p1PrestigePts +
                 "\nPlayer 1 Resource Point values: " +
                 "\nGold: "+ p1GoldPts +
@@ -530,7 +547,7 @@ public class SplendorGameState {
                 "\nRuby: " + p1RubyPts +
                 "\nDiamond: " + p1DiamondPts +
                 "\nOnyx: " + p1OnyxPts +
-                "Player 1 Coin Values: " +
+                "\nPlayer 1 Coin Values: " +
                 "\nGold: "+ p1GoldCoins +
                 "\nEmerald: " + p1EmeraldCoins +
                 "\nSapphire: " + p1SapphireCoins +
@@ -538,9 +555,19 @@ public class SplendorGameState {
                 "\nDiamond: " + p1DiamondCoins +
                 "\nOnyx: " + p1OnyxCoins +
                 "\nPlayer 1 number of Cards reserved: " + p1NumCardsReserved+
-                " "; //TODO go through reserve card array.
+                "\nPlayer 1 Cards in reserve: ";
+
+        //loop through reserve card array, append to string
+        for (Card card: p1Hand.getReserved() ) {
+            p1_Reserve = p1_Reserve + card.toString();
+        }
+        //null message
+        if(p1_Reserve ==null){p1_Reserve = "\nNo cards in reserve";}
+        //add reserve to player for clarity
+        p1 = p1 + p1_Reserve;
 
         p2 = "\n\nPlayer 2 name: " + player2Name +
+                "\nPlayer 2 turn ID: " + PLAYER2ID +
                 "\nPlayer 2 Prestige Points: " + p2PrestigePts +
                 "\nPlayer 2 Resource Point values: " +
                 "\nGold: "+ p2GoldPts +
@@ -549,7 +576,7 @@ public class SplendorGameState {
                 "\nRuby: " + p2RubyPts +
                 "\nDiamond: " + p2DiamondPts +
                 "\nOnyx: " + p2OnyxPts +
-                "Player 2 Coin Values: " +
+                "\nPlayer 2 Coin Values: " +
                 "\nGold: "+ p2GoldCoins +
                 "\nEmerald: " + p2EmeraldCoins +
                 "\nSapphire: " + p2SapphireCoins +
@@ -557,10 +584,19 @@ public class SplendorGameState {
                 "\nDiamond: " + p2DiamondCoins +
                 "\nOnyx: " + p2OnyxCoins +
                 "\nPlayer 2 number of Cards reserved: " + p2NumCardsReserved+
-                "\nPlayer 2 cards reserved: ";
-        //TODO go through reserve card array.
+                "\nPlayer 2 Cards in reserve: ";
+
+        //loop through reserve card array, append to string
+        for (Card card: p2Hand.getReserved() ) {
+            p2_Reserve = p2_Reserve + card.toString();
+        }
+        //null message
+        if(p2_Reserve ==null){p2_Reserve = "\nNo cards in reserve";}
+        //add reserve to player for clarity
+        p2 = p2 + p2_Reserve;
 
         p3 = "\n\nPlayer 3 name: " + player3Name +
+                "\nPlayer 3 turn ID: " + PLAYER3ID +
                 "\nPlayer 3 Prestige Points: " + p3PrestigePts +
                 "\nPlayer 3 Resource Point values: " +
                 "\nGold: "+ p3GoldPts +
@@ -569,7 +605,7 @@ public class SplendorGameState {
                 "\nRuby: " + p3RubyPts +
                 "\nDiamond: " + p3DiamondPts +
                 "\nOnyx: " + p3OnyxPts +
-                "Player 3 Coin Values: " +
+                "\nPlayer 3 Coin Values: " +
                 "\nGold: "+ p3GoldCoins +
                 "\nEmerald: " + p3EmeraldCoins +
                 "\nSapphire: " + p3SapphireCoins +
@@ -577,9 +613,20 @@ public class SplendorGameState {
                 "\nDiamond: " + p3DiamondCoins +
                 "\nOnyx: " + p3OnyxCoins +
                 "\nPlayer 3 number of Cards reserved: " + p3NumCardsReserved+
-                " "; //TODO go through reserve card array.
+                "\nPlayer 3 Cards in reserve: ";;
+
+        //loop through reserve card array, append to string
+        for (Card card: p3Hand.getReserved() ) {
+            p3_Reserve = p3_Reserve + card.toString();
+        }
+        //null message
+        if(p3_Reserve ==null){p3_Reserve = "\nNo cards in reserve";}
+        //add reserve to player for clarity
+        p3 = p3 + p3_Reserve;
+
 
         p4 = "\n\nPlayer 4 name: " + player4Name +
+                "\nPlayer 4 turn ID: " + PLAYER4ID +
                 "\nPlayer 4 Prestige Points: " + p4PrestigePts +
                 "\nPlayer 4 Resource Point values: " +
                 "\nGold: "+ p4GoldPts +
@@ -588,7 +635,7 @@ public class SplendorGameState {
                 "\nRuby: " + p4RubyPts +
                 "\nDiamond: " + p4DiamondPts +
                 "\nOnyx: " + p4OnyxPts +
-                "Player 4 Coin Values: " +
+                "\nPlayer 4 Coin Values: " +
                 "\nGold: "+ p4GoldCoins +
                 "\nEmerald: " + p4EmeraldCoins +
                 "\nSapphire: " + p4SapphireCoins +
@@ -596,14 +643,29 @@ public class SplendorGameState {
                 "\nDiamond: " + p4DiamondCoins +
                 "\nOnyx: " + p4OnyxCoins +
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
-                " "; //TODO go through reserve card array.
+                "\nPlayer 4 Cards in reserve: ";;
+
+        //loop through reserve card array, append to string
+        for (Card card: p4Hand.getReserved() ) {
+            p4_Reserve = p4_Reserve + card.toString();
+        }
+        //null message
+        if(p4_Reserve ==null){p4_Reserve = "\nNo cards in reserve";}
+        //add reserve to player for clarity
+        p4 = p4 + p4_Reserve;
+
+        //add players together for clarity
+        playerTS = p1 + p2 + p3 + p4;
 
         n1 = "\n\nNoble 1: " + noble1.toString();
         n2 = "\n\nNoble 2: " + noble2.toString();
         n3 = "\n\nNoble 2: " + noble3.toString();
         n4 = "\n\nNoble 2: " + noble4.toString();
 
-        coinToString = "\n\nCoins in the Bank: " +
+        //add nobles together for clarity
+        nobleTS = "\n\n---The Nobles this Game---" + n1 + n2 + n3 + n4;
+
+        coinToString = "\n\n---Coins in the Bank--- " +
                 "\nGold: "+ goldCoins +
                 "\nEmerald: " + emeraldCoins +
                 "\nSapphire: " + sapphireCoins +
@@ -611,10 +673,55 @@ public class SplendorGameState {
                 "\nDiamond: " + diamondCoins +
                 "\nOnyx: " + onyxCoins;
 
-        currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
-//n1 + n2 + n3 + n4 +
-        returnString = currGame + p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
+
+
+
+        for (Card rank1: rank1Stack ) {
+            rank1Cards = rank1Cards + rank1.toString();
+        }
+        for (Card rank2: rank2Stack ) {
+            rank2Cards = rank2Cards + rank2.toString();
+        }
+        for (Card rank3: rank3Stack ) {
+            rank3Cards = rank3Cards + rank3.toString();
+        }
+        allCardsTS = "\nRank 1 cards: " + rank1Cards + "\nRank 2 cards: " + rank2Cards + "\nRank 3 cards: " + rank3Cards;
+
+        //prints boards
+        for(int i = 0; i < RANKS; i++){
+            for(int j = 0; j < CARDS_PER_RANK; j++){
+                currBoardTS = currBoardTS + board[i][j].toString();
+            }
+
+        }
+     //get hands for each player
+        for (Card hand: p1Hand.getHand() ) {
+            p1HandTS = p1HandTS + hand.toString();
+        }
+        for (Card hand: p2Hand.getHand() ) {
+            p2HandTS = p2HandTS + hand.toString();
+        }
+        for (Card hand: p3Hand.getHand() ) {
+            p3HandTS = p3HandTS + hand.toString();
+        }
+        for (Card hand: p4Hand.getHand() ) {
+            p4HandTS = p4HandTS + hand.toString();
+        }
+
+        GameInfoTS = "\nInfo about the Game: " +
+                "\nPlayer turn: " + playerTurn +
+                "\n\n----Player hands----" +
+                "\nPlayer 1 hand: " + p1HandTS +
+                "\nPlayer 2 hand: " + p2HandTS +
+                "\nPlayer 3 hand: " + p3HandTS +
+                "\nPlayer 4 hand: " + p4HandTS +
+                "\n----The current board----\n" + currBoardTS +
+                "\n\n------All Cards------" + allCardsTS;
+
+
+
+                returnString = newGame + playerTS + nobleTS + coinToString + GameInfoTS;
 
         return returnString;
     }

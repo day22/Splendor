@@ -61,4 +61,11 @@ public class Hand {
             return true;
     }
 
+    public ArrayList<Card> getHand(){
+        return this.hand;
+    }
+
+    public ArrayList<Card> getReserved(){
+        return this.reserved;
+    }
 }

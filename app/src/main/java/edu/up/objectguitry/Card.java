@@ -50,7 +50,8 @@ public class Card {
     @Override
     public String toString(){
         String ret;
-        ret = "\nCard Level: " + cardLevel +
+        ret = "\n----" +
+                "\nCard Level: " + cardLevel +
                 "\nGem Color: " + colorGem +
                 "\nPrestige Points:  " + prestigePoints +
                 "\nPrice of Card: " +
@@ -58,8 +59,9 @@ public class Card {
                 "\nSapphire: " + bPrice +
                 "\nEmerald: " + gPrice +
                 "\nDiamond: " + wPrice +
-                "\nOnyx: " + brPrice;
-        //TODO cardLayout??
+                "\nOnyx: " + brPrice +
+                "\n----";
+
 
         return ret;
     }

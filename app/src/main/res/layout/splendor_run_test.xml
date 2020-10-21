@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ellipsize="none"
-                android:maxLines="500"
+                android:maxLines="2000"
                 android:scrollbars="vertical"
                 android:textColor="#000000" />
         </LinearLayout>
