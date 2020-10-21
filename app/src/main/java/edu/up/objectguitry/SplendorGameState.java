@@ -323,14 +323,15 @@ public class SplendorGameState {
         this.p1GoldCoins = 0;
         this.p1GoldPts = 0;
         this.p1EmeraldCoins = 0;
-        this.p1EmeraldPts = 0;
+        this.p1EmeraldPts = 4;
         this.p1SapphireCoins = 0;
-        this.p1SapphirePts = 0;
+        this.p1SapphirePts = 4;
         this.p1RubyCoins = 0;
-        this.p1RubyPts = 0;
+        this.p1RubyPts = 4;
         this.p1OnyxCoins = 0;
-        this.p1OnyxPts = 0;
+        this.p1OnyxPts = 4;
         this.p1DiamondCoins = 0;
+        this.p1DiamondPts = 4;
         this.p1PrestigePts = 0;
         this.p1NumCardsReserved = 0;
         this.p1ReserveCards = new ArrayList<Card>();
@@ -338,14 +339,15 @@ public class SplendorGameState {
         this.p2GoldCoins = 0;
         this.p2GoldPts = 0;
         this.p2EmeraldCoins = 0;
-        this.p2EmeraldPts = 0;
+        this.p2EmeraldPts = 4;
         this.p2SapphireCoins = 0;
-        this.p2SapphirePts = 0;
-        this.p2RubyCoins = 0;
-        this.p2RubyPts = 0;
+        this.p2SapphirePts = 4;
+        this.p2RubyCoins = 4;
+        this.p2RubyPts = 4;
         this.p2OnyxCoins = 0;
-        this.p2OnyxPts = 0;
+        this.p2OnyxPts = 4;
         this.p2DiamondCoins = 0;
+        this.p2DiamondPts = 4;
         this.p2PrestigePts = 0;
         this.p2NumCardsReserved = 0;
         this.p2ReserveCards = new ArrayList<Card>();
@@ -353,14 +355,15 @@ public class SplendorGameState {
         this.p3GoldCoins = 0;
         this.p3GoldPts = 0;
         this.p3EmeraldCoins = 0;
-        this.p3EmeraldPts = 0;
+        this.p3EmeraldPts = 4;
         this.p3SapphireCoins = 0;
-        this.p3SapphirePts = 0;
+        this.p3SapphirePts = 4;
         this.p3RubyCoins = 0;
-        this.p3RubyPts = 0;
+        this.p3RubyPts = 4;
         this.p3OnyxCoins = 0;
-        this.p3OnyxPts = 0;
+        this.p3OnyxPts = 4;
         this.p3DiamondCoins = 0;
+        this.p3DiamondPts = 4;
         this.p3PrestigePts = 0;
         this.p3NumCardsReserved = 0;
         this.p3ReserveCards = new ArrayList<Card>();
@@ -368,14 +371,15 @@ public class SplendorGameState {
         this.p4GoldCoins = 0;
         this.p4GoldPts = 0;
         this.p4EmeraldCoins = 0;
-        this.p4EmeraldPts = 0;
+        this.p4EmeraldPts = 4;
         this.p4SapphireCoins = 0;
-        this.p4SapphirePts = 0;
+        this.p4SapphirePts = 4;
         this.p4RubyCoins = 0;
-        this.p4RubyPts = 0;
+        this.p4RubyPts = 4;
         this.p4OnyxCoins = 0;
-        this.p4OnyxPts = 0;
+        this.p4OnyxPts = 4;
         this.p4DiamondCoins = 0;
+        this.p4DiamondPts = 4;
         this.p4PrestigePts = 0;
         this.p4NumCardsReserved = 0;
         this.p4ReserveCards = new ArrayList<Card>();
@@ -597,12 +601,12 @@ public class SplendorGameState {
                 "\nOnyx: " + p4OnyxCoins +
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
                 " "; //TODO go through reserve card array.
-/*
+
         n1 = "\n\nNoble 1: " + noble1.toString();
         n2 = "\n\nNoble 2: " + noble2.toString();
         n3 = "\n\nNoble 2: " + noble3.toString();
         n4 = "\n\nNoble 2: " + noble4.toString();
-    */
+
         coinToString = "\n\nCoins in the Bank: " +
                 "\nGold: "+ goldCoins +
                 "\nEmerald: " + emeraldCoins +
@@ -613,8 +617,8 @@ public class SplendorGameState {
 
         currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
-// + n2 + n3 + n4
-        returnString = currGame + p1 + p2 + p3 + p4 + coinToString;
+//n1 + n2 + n3 + n4 +
+        returnString = currGame + p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
 
         return returnString;
     }

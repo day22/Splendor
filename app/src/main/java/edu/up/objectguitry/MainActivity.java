@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        TextView textBox = findViewById(R.id.printVals);
         InputStream rank1 = getResources().openRawResource(R.raw.rank1);
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void updateText() {
         textBox.setText("");
+        textBox.setText("For the sake of testing, all players will be given 4 coins to be able to buy cards");
         Log.d("update text no params","here");
     }
 }
