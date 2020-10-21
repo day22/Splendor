@@ -613,7 +613,7 @@ public class SplendorGameState {
                 "\nSapphire: " + sapphireCoins +
                 "\nRuby: " + rubyCoins +
                 "\nDiamond: " + diamondCoins +
-                "\nOnyx: " + onyxCoins;
+                "\nOnyx: " + onyxCoins + "\n";
 
         currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
