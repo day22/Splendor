@@ -142,10 +142,10 @@ public class SplendorGameState {
     private final int CARDS_PER_RANK = 4;
 
     // some could be unused, dependent on num players
-    private Noble noble1;// = new Noble(1,2,3,4,5,15); //used for tostring tests
-    private Noble noble2;
-    private Noble noble3;
-    private Noble noble4;
+    private Noble noble1;//= new Noble(4,0,4,0,0,3);;
+    private Noble noble2; //= new Noble(3,0,0,3,3,3);;
+    private Noble noble3; //= new Noble(4,0,0,0,4,3);;
+    private Noble noble4 ;//= new Noble(0,3,3,3,0,3);;
 
     private int rubyCoins;
     private int sapphireCoins;
@@ -183,6 +183,8 @@ public class SplendorGameState {
         //initializeDecks(); //unfinished
         //initializeHands();
         initializeCoins();
+        initializeNobles();
+      // initializeDecks(rank1, rank2, rank3); //unfinished
 
         initializeDecks(rank1, rank2, rank3); //unfinished
         initializeHands();
@@ -488,6 +490,13 @@ public class SplendorGameState {
         this.diamondCoins = 7;
         this.onyxCoins = 7;
         this.goldCoins = 5;
+    }
+    //this will eventually initialize 4 random nobles from a set of 10, for now we have choosen 4
+    public void initializeNobles(){
+        this.noble1 = new Noble(4,0,4,0,0,3);
+        this.noble2 = new Noble(3,0,0,3,3,3);
+        this.noble3 = new Noble(4,0,0,0,4,3);
+        this.noble4 = new Noble(0,3,3,3,0,3);
     }
 
 
