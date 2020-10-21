@@ -19,8 +19,6 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //actions
 
-        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
+        InputStream rank11 = getResources().openRawResource(R.raw.rank1);
+        InputStream rank22 = getResources().openRawResource(R.raw.rank2);
+        InputStream rank33 = getResources().openRawResource(R.raw.rank3);
+        SplendorGameState thirdInstance = new SplendorGameState(rank11, rank22, rank33);
         SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
         updateText(secondInstance);
         updateText(fourthInstance);
