@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,27 +12,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.InputStream;
 
-
-
-
-
-
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText textBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
         Log.d("onCreate","here");
-        TextView textBox = findViewById(R.id.printVals);
+         this.textBox = findViewById(R.id.printVals);
         Button testButton = findViewById(R.id.test_run);
         testButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        TextView textBox = findViewById(R.id.printVals);
+
         InputStream rank1 = getResources().openRawResource(R.raw.rank1);
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
@@ -59,14 +56,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateText(SplendorGameState gameState) {
-        TextView textBox = findViewById(R.id.printVals);
         Log.d("update text 1 params","here");
-        textBox.append(gameState.toString());
+        this.textBox.append(gameState.toString());
     }
     private void updateText() {
-        TextView textBox = findViewById(R.id.printVals);
-        textBox.setText("");
-        textBox.setText("For the sake of testing, all players will be given 4 coins to be able to buy cards");
+        this.textBox.setText("");
+        this.textBox.setText("For the sake of testing, all players will be given 4 coins to be able to buy cards");
         Log.d("update text no params","here");
     }
 }
