@@ -138,6 +138,9 @@ public class SplendorGameState {
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
     private ArrayList<Card> rank3Stack; //ArrayList of rank3 cards
 
+    private final int RANKS = 3;
+    private final int CARDS_PER_RANK = 4;
+
     // some could be unused, dependent on num players
     private Noble noble1;// = new Noble(1,2,3,4,5,15); //used for tostring tests
     private Noble noble2;
@@ -171,7 +174,7 @@ public class SplendorGameState {
     private int stack2Iterator = 0;
     private int stack3Iterator = 0;
 
-    private Card board[][] = new Card[3][4];
+    private Card board[][] = new Card[RANKS][CARDS_PER_RANK];
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
