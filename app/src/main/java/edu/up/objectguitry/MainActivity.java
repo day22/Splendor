@@ -11,15 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.InputStream;
 
-
-
-
-
-
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
