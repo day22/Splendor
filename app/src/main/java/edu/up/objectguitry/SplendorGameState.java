@@ -794,24 +794,29 @@ public class SplendorGameState {
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
 
     /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
-    public boolean coinAction() {
-        switch(this.getPlayerTurn()) {
-            case 1:
-              //  coinCheck(1, );
-                break;
-            case 2:
-               // coinCheck(2);
-                break;
-            case 3:
-             //   coinCheck( 3);
-                break;
-            case 4:
-             //   coinCheck(4);
-                break;
+    public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
+        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
+            individualCoinAction(coinColor1);
+            individualCoinAction(coinColor2);
+            individualCoinAction(coinColor3);
+            nextPlayerTurn();
+            return true;
         }
-        nextPlayerTurn();
         return false;
     }
+
+    public boolean coinAction(int coinColor)
+    {
+        if (coinCheckDoubles(coinColor)){
+            individualCoinAction(coinColor);
+            individualCoinAction(coinColor);
+            nextPlayerTurn();
+            return true;
+        }
+        return false;
+    }
+
+
 
     /* TODO: HOW DO WE WANT THEM TO BUY THE CARD? CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
         - NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
@@ -947,76 +952,177 @@ public class SplendorGameState {
         this.playerTurn = playerID;
     }
 
-    //TODO: FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF ITS A LEGAL MOVE
-    private boolean coinCheck(int playerID, int coinColor, int coinColor2, int coinColor3, boolean coinPileCheck) {
-        boolean flag = coinPileCheck()[coinColor];
-        switch (playerID) {
-            case 1:
-                if(p1coinCountBool()) {
+    //FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF THE SINGLE COIN GRABS ARE LEGAL
+    private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) {
 
+        boolean flag1 = coinPileCheck()[coinColor];
+        boolean flag2 = coinPileCheck()[coinColor2];
+        boolean flag3 = coinPileCheck()[coinColor3];
+
+        switch (this.getPlayerTurn()) {
+            case 1:
+                if(p1coinCountBool() && flag1 && flag2 && flag3) {
+                    return true;
                 }
                 break;
             case 2:
-                if(p2coinCointBool()) {
-
+                if(p2coinCountBool() && flag1 && flag2 && flag3) {
+                    return true;
                 }
                 break;
             case 3:
-                if(p3coinCointBool()) {
-
+                if(p3coinCountBool() && flag1 && flag2 && flag3) {
+                    return true;
                 }
                 break;
             case 4:
-                if(p4coinCointBool()) {
-
+                if(p4coinCountBool() && flag1 && flag2 && flag3) {
+                    return true;
                 }
                 break;
         }
         return false;
     }
 
+    private boolean coinCheckDoubles(int coinColor)
+    {
+        boolean flag = coinPileCheckDoubles()[coinColor];
+        switch (this.getPlayerTurn()){
+            case 1:
+                if(p1coinCountBool() && flag) return true;
+                break;
+            case 2:
+                if(p2coinCountBool() && flag) return true;
+                break;
+            case 3:
+                if(p3coinCountBool() && flag) return true;
+                break;
+            case 4:
+                if(p4coinCountBool() && flag) return true;
+                break;
+        }
+        return false;
+    }
 
     private boolean p1coinCountBool() {
         if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10)
             return false;
         return true;
     }
-    private boolean p2coinCointBool() {
+    private boolean p2coinCountBool() {
         if(this.p2DiamondCoins+this.p2EmeraldCoins+this.p2OnyxCoins+this.p2RubyCoins+this.p2SapphireCoins+this.p2GoldCoins >= 10)
             return false;
         return true;
     }
 
-    private boolean p3coinCointBool() {
+    private boolean p3coinCountBool() {
         if(this.p3DiamondCoins+this.p3EmeraldCoins+this.p3OnyxCoins+this.p3RubyCoins+this.p3SapphireCoins+this.p3GoldCoins >= 10)
             return false;
         return true;
     }
 
-    private boolean p4coinCointBool() {
+    private boolean p4coinCountBool() {
         if(this.p4DiamondCoins+this.p4EmeraldCoins+this.p4OnyxCoins+this.p4RubyCoins+this.p4SapphireCoins+this.p4GoldCoins >= 10)
             return false;
         return true;
     }
 
-    private boolean[] coinPileCheck() {
+    private boolean[] coinPileCheckDoubles() {
         boolean[] coinPiles = {(this.rubyCoins >=4), (this.sapphireCoins >= 4), this.emeraldCoins >= 4, this.diamondCoins >= 4, this.onyxCoins >= 4};
         return coinPiles;
     }
 
-    private void individualCoinAction(int playerID, int coinColor) {
-        switch(playerID) {
-            case 1:
+    private boolean[] coinPileCheck() {
+        boolean[] coinPiles = {(this.rubyCoins > 0), (this.sapphireCoins > 0), this.emeraldCoins > 0, this.diamondCoins > 0, this.onyxCoins > 0};
+        return coinPiles;
+    }
 
+    private void individualCoinAction(int coinColor) {
+        switch(coinColor) {
+            case 0:
+                this.rubyCoins--;
+                switch(this.getPlayerTurn()) {
+                    case 1:
+                        this.p1RubyCoins++;
+                        break;
+                    case 2:
+                        this.p2RubyCoins++;
+                        break;
+                    case 3:
+                        this.p3RubyCoins++;
+                        break;
+                    case 4:
+                        this.p4RubyCoins++;
+                        break;
+                }
+                break;
+            case 1:
+                this.sapphireCoins--;
+                switch(this.getPlayerTurn()) {
+                    case 1:
+                        this.p1SapphireCoins++;
+                        break;
+                    case 2:
+                        this.p2SapphireCoins++;
+                        break;
+                    case 3:
+                        this.p3SapphireCoins++;
+                        break;
+                    case 4:
+                        this.p4SapphireCoins++;
+                        break;
+                }
                 break;
             case 2:
-
+                this.emeraldCoins--;
+                switch(this.getPlayerTurn()) {
+                    case 1:
+                        this.p1EmeraldCoins++;
+                        break;
+                    case 2:
+                        this.p2EmeraldCoins++;
+                        break;
+                    case 3:
+                        this.p3EmeraldCoins++;
+                        break;
+                    case 4:
+                        this.p4EmeraldCoins++;
+                        break;
+                }
                 break;
             case 3:
-
+                this.diamondCoins--;
+                switch(this.getPlayerTurn()) {
+                    case 1:
+                        this.p1DiamondCoins++;
+                        break;
+                    case 2:
+                        this.p2DiamondCoins++;
+                        break;
+                    case 3:
+                        this.p3DiamondCoins++;
+                        break;
+                    case 4:
+                        this.p4DiamondCoins++;
+                        break;
+                }
                 break;
             case 4:
-
+                this.onyxCoins--;
+                switch(this.getPlayerTurn()) {
+                    case 1:
+                        this.p1OnyxCoins++;
+                        break;
+                    case 2:
+                        this.p2OnyxCoins++;
+                        break;
+                    case 3:
+                        this.p3OnyxCoins++;
+                        break;
+                    case 4:
+                        this.p4OnyxCoins++;
+                        break;
+                }
                 break;
         }
     }
