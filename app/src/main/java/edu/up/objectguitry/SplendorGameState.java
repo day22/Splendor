@@ -53,7 +53,6 @@ public class SplendorGameState {
 
     //reserve cards count
     private int p1NumCardsReserved;
-    private ArrayList<Card> p1ReserveCards;
 
 //~~~~~~~~~~~~~~~~ player 2 ~~~~~~~~~~~~~~~~~~ //
 
@@ -78,7 +77,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p2NumCardsReserved;
-    private ArrayList<Card> p2ReserveCards;
 
 
 //~~~~~~~~~~~~~~~~ player 3 ~~~~~~~~~~~~~~~~~~ //
@@ -104,7 +102,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p3NumCardsReserved;
-    private ArrayList<Card> p3ReserveCards;
 
 
 //~~~~~~~~~~~~~~~~ player 4 ~~~~~~~~~~~~~~~~~~ //
@@ -130,7 +127,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p4NumCardsReserved;
-    private ArrayList<Card> p4ReserveCards;
 
 //~~~~~~~~~~~~~~~~~~ Deck and Coin Information ~~~~~~~~~~~~~~~ //
 
@@ -157,7 +153,6 @@ public class SplendorGameState {
     /*
      *New Game Constructor
      * TODO
-     *  -figure out  file reading for initializing deck array lists
      *  -possibly add noble/card visibility boolean instance variables
      */
 //~~~~~~~~~~~~~~~~~~ Hand Informtion ~~~~~~~~~~~~~ //
@@ -230,10 +225,6 @@ public class SplendorGameState {
         this.p1DiamondCoins = stateToCopy.getP1DiamondCoins();
         this.p1PrestigePts = stateToCopy.getP1OnyxPts();
         this.p1NumCardsReserved = stateToCopy.getP1NumCardsReserved();
-        this.p1ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p1ReserveCards) {
-            this.p1ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 2 points and reserve cards
         this.p2GoldCoins = stateToCopy.getP2GoldCoins();
@@ -250,10 +241,6 @@ public class SplendorGameState {
         this.p2DiamondCoins = stateToCopy.getP2DiamondCoins();
         this.p2PrestigePts = stateToCopy.getP2OnyxPts();
         this.p2NumCardsReserved = stateToCopy.getP2NumCardsReserved();
-        this.p2ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p2ReserveCards) {
-            this.p2ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 3 points and reserve cards
         this.p3GoldCoins = stateToCopy.getP3GoldCoins();
@@ -270,10 +257,6 @@ public class SplendorGameState {
         this.p3DiamondCoins = stateToCopy.getP3DiamondCoins();
         this.p3PrestigePts = stateToCopy.getP3OnyxPts();
         this.p3NumCardsReserved = stateToCopy.getP3NumCardsReserved();
-        this.p3ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p3ReserveCards) {
-            this.p3ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 4 points and reserve cards
         this.p4GoldCoins = stateToCopy.getP4GoldCoins();
@@ -290,10 +273,6 @@ public class SplendorGameState {
         this.p4DiamondCoins = stateToCopy.getP4DiamondCoins();
         this.p4PrestigePts = stateToCopy.getP4OnyxPts();
         this.p4NumCardsReserved = stateToCopy.getP4NumCardsReserved();
-        this.p4ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p4ReserveCards) {
-            this.p4ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copies for all 3 card stacks
         this.rank1Stack = new ArrayList<>();
@@ -335,7 +314,6 @@ public class SplendorGameState {
         this.p1DiamondPts = 4;
         this.p1PrestigePts = 0;
         this.p1NumCardsReserved = 0;
-        this.p1ReserveCards = new ArrayList<Card>();
 
         this.p2GoldCoins = 0;
         this.p2GoldPts = 0;
@@ -351,7 +329,6 @@ public class SplendorGameState {
         this.p2DiamondPts = 4;
         this.p2PrestigePts = 0;
         this.p2NumCardsReserved = 0;
-        this.p2ReserveCards = new ArrayList<Card>();
 
         this.p3GoldCoins = 0;
         this.p3GoldPts = 0;
@@ -367,7 +344,6 @@ public class SplendorGameState {
         this.p3DiamondPts = 4;
         this.p3PrestigePts = 0;
         this.p3NumCardsReserved = 0;
-        this.p3ReserveCards = new ArrayList<Card>();
 
         this.p4GoldCoins = 0;
         this.p4GoldPts = 0;
@@ -383,7 +359,6 @@ public class SplendorGameState {
         this.p4DiamondPts = 4;
         this.p4PrestigePts = 0;
         this.p4NumCardsReserved = 0;
-        this.p4ReserveCards = new ArrayList<Card>();
     }
 
     public void initializeBoard(ArrayList<Card> rank1, ArrayList<Card> rank2, ArrayList<Card> rank3){
@@ -401,7 +376,6 @@ public class SplendorGameState {
         this.board[0][3] = rank3.remove(0);
     }
 
-    //TODO file reading from three rank text files
     /*initialize Decks
      * reads input from text files into three array lists then shuffles deck
      *
@@ -1052,10 +1026,6 @@ public class SplendorGameState {
         return p1NumCardsReserved;
     }
 
-    public ArrayList<Card> getP1ReserveCards() {
-        return p1ReserveCards;
-    }
-
     public int getP2PrestigePts() {
         return p2PrestigePts;
     }
@@ -1110,10 +1080,6 @@ public class SplendorGameState {
 
     public int getP2NumCardsReserved() {
         return p2NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP2ReserveCards() {
-        return p2ReserveCards;
     }
 
     public int getP3PrestigePts() {
@@ -1172,10 +1138,6 @@ public class SplendorGameState {
         return p3NumCardsReserved;
     }
 
-    public ArrayList<Card> getP3ReserveCards() {
-        return p3ReserveCards;
-    }
-
     public int getP4PrestigePts() {
         return p4PrestigePts;
     }
@@ -1230,10 +1192,6 @@ public class SplendorGameState {
 
     public int getP4NumCardsReserved() {
         return p4NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP4ReserveCards() {
-        return p4ReserveCards;
     }
 
     public ArrayList<Card> getRank1Stack() {

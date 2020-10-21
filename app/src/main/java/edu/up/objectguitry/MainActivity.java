@@ -5,10 +5,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import java.io.InputStream;
 
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InputStream rank1 = getResources().openRawResource(R.raw.rank1);
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
-
         Log.d("onClick","here");
         updateText();
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
@@ -45,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textBox.append("Player 4 will buy a rank 1 card, is this action legal: "+firstInstance.cardAction(firstInstance.getBoard(2, 2))+"\n");
 
         //actions
-
         InputStream rank11 = getResources().openRawResource(R.raw.rank1);
         InputStream rank22 = getResources().openRawResource(R.raw.rank2);
         InputStream rank33 = getResources().openRawResource(R.raw.rank3);
