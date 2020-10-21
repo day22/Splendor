@@ -141,10 +141,10 @@ public class SplendorGameState {
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
     private ArrayList<Card> rank3Stack; //ArrayList of rank3 cards
 
-    private Noble noble1;// = new Noble(1,2,3,4,5,15); //used for tostring tests
-    private Noble noble2;
-    private Noble noble3;
-    private Noble noble4;
+    private Noble noble1;//= new Noble(4,0,4,0,0,3);;
+    private Noble noble2; //= new Noble(3,0,0,3,3,3);;
+    private Noble noble3; //= new Noble(4,0,0,0,4,3);;
+    private Noble noble4 ;//= new Noble(0,3,3,3,0,3);;
 
     private int rubyCoins;
     private int sapphireCoins;
@@ -177,12 +177,12 @@ public class SplendorGameState {
 
     public SplendorGameState() {
         initializePlayerPointValues();
-        initializeDecks(); //unfinished
+       // initializeDecks(); //unfinished
         initializeHands();
         initializeCoins();
+        initializeNobles();
+      // initializeDecks(rank1, rank2, rank3); //unfinished
 
-        initializeDecks(rank1, rank2, rank3); //unfinished
-        initializeHands();
     }
 
     /*
@@ -273,7 +273,7 @@ public class SplendorGameState {
         for (Card card : stateToCopy.p4ReserveCards) {
             this.p4ReserveCards.add(new Card(card)); //uses copy constructor in card
         }
-
+    /*
         //deep copies for all 3 card stacks
         this.rank1Stack = new ArrayList<>();
         for (Card rankCard : stateToCopy.rank1Stack) {
@@ -289,11 +289,8 @@ public class SplendorGameState {
         for (Card rankCard : stateToCopy.rank3Stack) {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
+*/
 
-        //TODO make noble class and copy constructor
-        initializeDecks();
-        initializeHands();
-        initializeCoins();
     }
 
     //helper method for constructor setting all point values for player to zero
@@ -462,6 +459,13 @@ public class SplendorGameState {
         this.diamondCoins = 7;
         this.onyxCoins = 7;
         this.goldCoins = 5;
+    }
+    //this will eventually initialize 4 random nobles from a set of 10, for now we have choosen 4
+    public void initializeNobles(){
+        this.noble1 = new Noble(4,0,4,0,0,3);
+        this.noble2 = new Noble(3,0,0,3,3,3);
+        this.noble3 = new Noble(4,0,0,0,4,3);
+        this.noble4 = new Noble(0,3,3,3,0,3);
     }
 
     public String getPlayer1Name() {
@@ -857,12 +861,12 @@ public class SplendorGameState {
                 "\nOnyx: " + p4OnyxCoins +
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
                 " "; //TODO go through reserve card array.
-/*
+
         n1 = "\n\nNoble 1: " + noble1.toString();
         n2 = "\n\nNoble 2: " + noble2.toString();
         n3 = "\n\nNoble 2: " + noble3.toString();
         n4 = "\n\nNoble 2: " + noble4.toString();
-    */
+
         coinToString = "\n\nCoins in the Bank: " +
                 "\nGold: "+ goldCoins +
                 "\nEmerald: " + emeraldCoins +
@@ -873,8 +877,8 @@ public class SplendorGameState {
 
         currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
-// + n2 + n3 + n4
-        returnString = currGame + p1 + p2 + p3 + p4 + coinToString;
+
+        returnString = currGame + p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
 
         return returnString;
     }
