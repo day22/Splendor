@@ -1239,5 +1239,9 @@ public class SplendorGameState {
     public Noble getNoble4() {
         return noble4;
     }
+
+    public Card getBoard(int row, int col){
+        return this.board[row][col];
+    }
 }
 
