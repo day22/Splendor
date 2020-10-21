@@ -137,6 +137,7 @@ public class SplendorGameState {
     private ArrayList<Card> rank1Stack; //ArrayList of rank1 cards
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
     private ArrayList<Card> rank3Stack; //ArrayList of rank3 cards
+
     // some could be unused, dependent on num players
     private Noble noble1;//= new Noble(4,0,4,0,0,3);;
     private Noble noble2; //= new Noble(3,0,0,3,3,3);;
@@ -298,6 +299,11 @@ public class SplendorGameState {
         for (Card rankCard : stateToCopy.rank3Stack) {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
+
+        this.noble1 = stateToCopy.getNoble1();
+        this.noble2 = stateToCopy.getNoble2();
+        this.noble3 = stateToCopy.getNoble3();
+        this.noble4 = stateToCopy.getNoble4();
     }
 
     //helper method for constructor setting all point values for player to zero
@@ -490,314 +496,7 @@ public class SplendorGameState {
         this.noble4 = new Noble(0,3,3,3,0,3);
     }
 
-    public Card getBoard(int row, int col){
-        return this.board[row][col];
-    }
 
-    public String getPlayer1Name() {
-        return player1Name;
-    }
-
-    public String getPlayer2Name() {
-        return player2Name;
-    }
-
-    public String getPlayer3Name() {
-        return player3Name;
-    }
-
-    public String getPlayer4Name() {
-        return player4Name;
-    }
-
-    public int getPlayerTurn() {
-        return playerTurn;
-    }
-
-    public int getPLAYER1ID() {
-        return PLAYER1ID;
-    }
-
-    public int getPLAYER2ID() {
-        return PLAYER2ID;
-    }
-
-    public int getPLAYER3ID() {
-        return PLAYER3ID;
-    }
-
-    public int getPLAYER4ID() {
-        return PLAYER4ID;
-    }
-
-    public int getP1PrestigePts() {
-        return p1PrestigePts;
-    }
-
-    public int getP1GoldPts() {
-        return p1GoldPts;
-    }
-
-    public int getP1EmeraldPts() {
-        return p1EmeraldPts;
-    }
-
-    public int getP1SapphirePts() {
-        return p1SapphirePts;
-    }
-
-    public int getP1RubyPts() {
-        return p1RubyPts;
-    }
-
-    public int getP1DiamondPts() {
-        return p1DiamondPts;
-    }
-
-    public int getP1OnyxPts() {
-        return p1OnyxPts;
-    }
-
-    public int getP1GoldCoins() {
-        return p1GoldCoins;
-    }
-
-    public int getP1EmeraldCoins() {
-        return p1EmeraldCoins;
-    }
-
-    public int getP1SapphireCoins() {
-        return p1SapphireCoins;
-    }
-
-    public int getP1RubyCoins() {
-        return p1RubyCoins;
-    }
-
-    public int getP1DiamondCoins() {
-        return p1DiamondCoins;
-    }
-
-    public int getP1OnyxCoins() {
-        return p1OnyxCoins;
-    }
-
-    public int getP1NumCardsReserved() {
-        return p1NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP1ReserveCards() {
-        return p1ReserveCards;
-    }
-
-    public int getP2PrestigePts() {
-        return p2PrestigePts;
-    }
-
-    public int getP2GoldPts() {
-        return p2GoldPts;
-    }
-
-    public int getP2EmeraldPts() {
-        return p2EmeraldPts;
-    }
-
-    public int getP2SapphirePts() {
-        return p2SapphirePts;
-    }
-
-    public int getP2RubyPts() {
-        return p2RubyPts;
-    }
-
-    public int getP2DiamondPts() {
-        return p2DiamondPts;
-    }
-
-    public int getP2OnyxPts() {
-        return p2OnyxPts;
-    }
-
-    public int getP2GoldCoins() {
-        return p2GoldCoins;
-    }
-
-    public int getP2EmeraldCoins() {
-        return p2EmeraldCoins;
-    }
-
-    public int getP2SapphireCoins() {
-        return p2SapphireCoins;
-    }
-
-    public int getP2RubyCoins() {
-        return p2RubyCoins;
-    }
-
-    public int getP2DiamondCoins() {
-        return p2DiamondCoins;
-    }
-
-    public int getP2OnyxCoins() {
-        return p2OnyxCoins;
-    }
-
-    public int getP2NumCardsReserved() {
-        return p2NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP2ReserveCards() {
-        return p2ReserveCards;
-    }
-
-    public int getP3PrestigePts() {
-        return p3PrestigePts;
-    }
-
-    public int getP3GoldPts() {
-        return p3GoldPts;
-    }
-
-    public int getP3EmeraldPts() {
-        return p3EmeraldPts;
-    }
-
-    public int getP3SapphirePts() {
-        return p3SapphirePts;
-    }
-
-    public int getP3RubyPts() {
-        return p3RubyPts;
-    }
-
-    public int getP3DiamondPts() {
-        return p3DiamondPts;
-    }
-
-    public int getP3OnyxPts() {
-        return p3OnyxPts;
-    }
-
-    public int getP3GoldCoins() {
-        return p3GoldCoins;
-    }
-
-    public int getP3EmeraldCoins() {
-        return p3EmeraldCoins;
-    }
-
-    public int getP3SapphireCoins() {
-        return p3SapphireCoins;
-    }
-
-    public int getP3RubyCoins() {
-        return p3RubyCoins;
-    }
-
-    public int getP3DiamondCoins() {
-        return p3DiamondCoins;
-    }
-
-    public int getP3OnyxCoins() {
-        return p3OnyxCoins;
-    }
-
-    public int getP3NumCardsReserved() {
-        return p3NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP3ReserveCards() {
-        return p3ReserveCards;
-    }
-
-    public int getP4PrestigePts() {
-        return p4PrestigePts;
-    }
-
-    public int getP4GoldPts() {
-        return p4GoldPts;
-    }
-
-    public int getP4EmeraldPts() {
-        return p4EmeraldPts;
-    }
-
-    public int getP4SapphirePts() {
-        return p4SapphirePts;
-    }
-
-    public int getP4RubyPts() {
-        return p4RubyPts;
-    }
-
-    public int getP4DiamondPts() {
-        return p4DiamondPts;
-    }
-
-    public int getP4OnyxPts() {
-        return p4OnyxPts;
-    }
-
-    public int getP4GoldCoins() {
-        return p4GoldCoins;
-    }
-
-    public int getP4EmeraldCoins() {
-        return p4EmeraldCoins;
-    }
-
-    public int getP4SapphireCoins() {
-        return p4SapphireCoins;
-    }
-
-    public int getP4RubyCoins() {
-        return p4RubyCoins;
-    }
-
-    public int getP4DiamondCoins() {
-        return p4DiamondCoins;
-    }
-
-    public int getP4OnyxCoins() {
-        return p4OnyxCoins;
-    }
-
-    public int getP4NumCardsReserved() {
-        return p4NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP4ReserveCards() {
-        return p4ReserveCards;
-    }
-
-    public ArrayList<Card> getRank1Stack() {
-        return rank1Stack;
-    }
-
-    public ArrayList<Card> getRank2Stack() {
-        return rank2Stack;
-    }
-
-    public ArrayList<Card> getRank3Stack() {
-        return rank3Stack;
-    }
-
-    public Noble getNoble1() {
-        return noble1;
-    }
-
-    public Noble getNoble2() {
-        return noble2;
-    }
-
-    public Noble getNoble3() {
-        return noble3;
-    }
-
-    public Noble getNoble4() {
-        return noble4;
-    }
-    //TODO
 /*~~~~~~~~~~~~~~~~~~~~~~~toString~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     //Returns a String to be printed by TextView
     /* Includes :
@@ -1244,6 +943,314 @@ public class SplendorGameState {
                 }
                 break;
         }
+    }
+
+    public String getPlayer1Name() {
+        return player1Name;
+    }
+
+    public String getPlayer2Name() {
+        return player2Name;
+    }
+
+    public String getPlayer3Name() {
+        return player3Name;
+    }
+
+    public String getPlayer4Name() {
+        return player4Name;
+    }
+
+    public int getPlayerTurn() {
+        return playerTurn;
+    }
+
+    public int getPLAYER1ID() {
+        return PLAYER1ID;
+    }
+
+    public int getPLAYER2ID() {
+        return PLAYER2ID;
+    }
+
+    public int getPLAYER3ID() {
+        return PLAYER3ID;
+    }
+
+    public int getPLAYER4ID() {
+        return PLAYER4ID;
+    }
+
+    public int getP1PrestigePts() {
+        return p1PrestigePts;
+    }
+
+    public int getP1GoldPts() {
+        return p1GoldPts;
+    }
+
+    public int getP1EmeraldPts() {
+        return p1EmeraldPts;
+    }
+
+    public int getP1SapphirePts() {
+        return p1SapphirePts;
+    }
+
+    public int getP1RubyPts() {
+        return p1RubyPts;
+    }
+
+    public int getP1DiamondPts() {
+        return p1DiamondPts;
+    }
+
+    public int getP1OnyxPts() {
+        return p1OnyxPts;
+    }
+
+    public int getP1GoldCoins() {
+        return p1GoldCoins;
+    }
+
+    public int getP1EmeraldCoins() {
+        return p1EmeraldCoins;
+    }
+
+    public int getP1SapphireCoins() {
+        return p1SapphireCoins;
+    }
+
+    public int getP1RubyCoins() {
+        return p1RubyCoins;
+    }
+
+    public int getP1DiamondCoins() {
+        return p1DiamondCoins;
+    }
+
+    public int getP1OnyxCoins() {
+        return p1OnyxCoins;
+    }
+
+    public int getP1NumCardsReserved() {
+        return p1NumCardsReserved;
+    }
+
+    public ArrayList<Card> getP1ReserveCards() {
+        return p1ReserveCards;
+    }
+
+    public int getP2PrestigePts() {
+        return p2PrestigePts;
+    }
+
+    public int getP2GoldPts() {
+        return p2GoldPts;
+    }
+
+    public int getP2EmeraldPts() {
+        return p2EmeraldPts;
+    }
+
+    public int getP2SapphirePts() {
+        return p2SapphirePts;
+    }
+
+    public int getP2RubyPts() {
+        return p2RubyPts;
+    }
+
+    public int getP2DiamondPts() {
+        return p2DiamondPts;
+    }
+
+    public int getP2OnyxPts() {
+        return p2OnyxPts;
+    }
+
+    public int getP2GoldCoins() {
+        return p2GoldCoins;
+    }
+
+    public int getP2EmeraldCoins() {
+        return p2EmeraldCoins;
+    }
+
+    public int getP2SapphireCoins() {
+        return p2SapphireCoins;
+    }
+
+    public int getP2RubyCoins() {
+        return p2RubyCoins;
+    }
+
+    public int getP2DiamondCoins() {
+        return p2DiamondCoins;
+    }
+
+    public int getP2OnyxCoins() {
+        return p2OnyxCoins;
+    }
+
+    public int getP2NumCardsReserved() {
+        return p2NumCardsReserved;
+    }
+
+    public ArrayList<Card> getP2ReserveCards() {
+        return p2ReserveCards;
+    }
+
+    public int getP3PrestigePts() {
+        return p3PrestigePts;
+    }
+
+    public int getP3GoldPts() {
+        return p3GoldPts;
+    }
+
+    public int getP3EmeraldPts() {
+        return p3EmeraldPts;
+    }
+
+    public int getP3SapphirePts() {
+        return p3SapphirePts;
+    }
+
+    public int getP3RubyPts() {
+        return p3RubyPts;
+    }
+
+    public int getP3DiamondPts() {
+        return p3DiamondPts;
+    }
+
+    public int getP3OnyxPts() {
+        return p3OnyxPts;
+    }
+
+    public int getP3GoldCoins() {
+        return p3GoldCoins;
+    }
+
+    public int getP3EmeraldCoins() {
+        return p3EmeraldCoins;
+    }
+
+    public int getP3SapphireCoins() {
+        return p3SapphireCoins;
+    }
+
+    public int getP3RubyCoins() {
+        return p3RubyCoins;
+    }
+
+    public int getP3DiamondCoins() {
+        return p3DiamondCoins;
+    }
+
+    public int getP3OnyxCoins() {
+        return p3OnyxCoins;
+    }
+
+    public int getP3NumCardsReserved() {
+        return p3NumCardsReserved;
+    }
+
+    public ArrayList<Card> getP3ReserveCards() {
+        return p3ReserveCards;
+    }
+
+    public int getP4PrestigePts() {
+        return p4PrestigePts;
+    }
+
+    public int getP4GoldPts() {
+        return p4GoldPts;
+    }
+
+    public int getP4EmeraldPts() {
+        return p4EmeraldPts;
+    }
+
+    public int getP4SapphirePts() {
+        return p4SapphirePts;
+    }
+
+    public int getP4RubyPts() {
+        return p4RubyPts;
+    }
+
+    public int getP4DiamondPts() {
+        return p4DiamondPts;
+    }
+
+    public int getP4OnyxPts() {
+        return p4OnyxPts;
+    }
+
+    public int getP4GoldCoins() {
+        return p4GoldCoins;
+    }
+
+    public int getP4EmeraldCoins() {
+        return p4EmeraldCoins;
+    }
+
+    public int getP4SapphireCoins() {
+        return p4SapphireCoins;
+    }
+
+    public int getP4RubyCoins() {
+        return p4RubyCoins;
+    }
+
+    public int getP4DiamondCoins() {
+        return p4DiamondCoins;
+    }
+
+    public int getP4OnyxCoins() {
+        return p4OnyxCoins;
+    }
+
+    public int getP4NumCardsReserved() {
+        return p4NumCardsReserved;
+    }
+
+    public ArrayList<Card> getP4ReserveCards() {
+        return p4ReserveCards;
+    }
+
+    public ArrayList<Card> getRank1Stack() {
+        return rank1Stack;
+    }
+
+    public ArrayList<Card> getRank2Stack() {
+        return rank2Stack;
+    }
+
+    public ArrayList<Card> getRank3Stack() {
+        return rank3Stack;
+    }
+
+    public Noble getNoble1() {
+        return noble1;
+    }
+
+    public Noble getNoble2() {
+        return noble2;
+    }
+
+    public Noble getNoble3() {
+        return noble3;
+    }
+
+    public Noble getNoble4() {
+        return noble4;
+    }
+
+    public Card getBoard(int row, int col){
+        return this.board[row][col];
     }
 }
 
