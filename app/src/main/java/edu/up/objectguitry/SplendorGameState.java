@@ -481,6 +481,10 @@ public class SplendorGameState {
         this.onyxCoins = 7;
         this.goldCoins = 5;
     }
+
+    public Card getBoard(int row, int col){
+        return this.board[row][col];
+    }
     
     public String getPlayer1Name() {
         return player1Name;
