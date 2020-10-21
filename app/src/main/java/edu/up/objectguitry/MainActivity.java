@@ -5,7 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,16 +16,18 @@ import java.io.InputStream;
 import com.opencsv.CSVReader;
 
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText textBox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
         Log.d("onCreate","here");
-        EditText textBox = findViewById(R.id.printVals);
+        TextView textBox = findViewById(R.id.printVals);
         Button testButton = findViewById(R.id.test_run);
         testButton.setOnClickListener(this);
     }
@@ -42,19 +44,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
         //actions
-//        SplendorGameState thirdInstance = new SplendorGameState();
-//        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
-//        updateText(secondInstance);
-//        updateText(fourthInstance);
+        SplendorGameState thirdInstance = new SplendorGameState();
+        SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
+        updateText(secondInstance);
+        updateText(fourthInstance);
     }
 
     private void updateText(SplendorGameState gameState) {
-        EditText textBox = findViewById(R.id.printVals);
+        TextView textBox = findViewById(R.id.printVals);
+        Log.d("update text 1 params","here");
         textBox.append(gameState.toString());
     }
     private void updateText() {
-        EditText textBox = findViewById(R.id.printVals);
+        TextView textBox = findViewById(R.id.printVals);
         textBox.setText("");
-        Log.d("updatetext no params","here");
+        Log.d("update text no params","here");
     }
 }
