@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class SplendorGameState {
@@ -166,9 +167,11 @@ public class SplendorGameState {
 
 //~~~~~~~~~~~~~~~~~~~~~ Game State Specific Variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-    private int stack1Iterator;
-    private int stack2Iterator;
-    private int stack3Iterator;
+    private int stack1Iterator = 0;
+    private int stack2Iterator = 0;
+    private int stack3Iterator = 0;
+
+    private Card board[][] = new Card[3][4];
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -180,6 +183,10 @@ public class SplendorGameState {
 
         initializeDecks(rank1, rank2, rank3); //unfinished
         initializeHands();
+        Collections.shuffle(this.rank1Stack);
+        Collections.shuffle(this.rank2Stack);
+        Collections.shuffle(this.rank3Stack);
+        initializeBoard(this.rank1Stack, this.rank2Stack, this.rank3Stack);
     }
 
     /*
@@ -356,6 +363,21 @@ public class SplendorGameState {
         this.p4ReserveCards = new ArrayList<Card>();
     }
 
+    public void initializeBoard(ArrayList<Card> rank1, ArrayList<Card> rank2, ArrayList<Card> rank3){
+        this.board[2][0] = rank1.get(this.stack1Iterator++);
+        this.board[2][1] = rank1.get(this.stack1Iterator++);
+        this.board[2][2] = rank1.get(this.stack1Iterator++);
+        this.board[2][3] = rank1.get(this.stack1Iterator++);
+        this.board[1][0] = rank2.get(this.stack2Iterator++);
+        this.board[1][1] = rank2.get(this.stack2Iterator++);
+        this.board[1][2] = rank2.get(this.stack2Iterator++);
+        this.board[1][3] = rank2.get(this.stack2Iterator++);
+        this.board[0][0] = rank2.get(this.stack3Iterator++);
+        this.board[0][1] = rank3.get(this.stack3Iterator++);
+        this.board[0][2] = rank3.get(this.stack3Iterator++);
+        this.board[0][3] = rank3.get(this.stack3Iterator++);
+    }
+
     //TODO file reading from three rank text files
     /*initialize Decks
      * reads input from text files into three array lists then shuffles deck
@@ -461,7 +483,6 @@ public class SplendorGameState {
     }
 
 
-    //TODO
 /*~~~~~~~~~~~~~~~~~~~~~~~toString~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     //Returns a String to be printed by TextView
     /* Includes :
@@ -682,10 +703,10 @@ public class SplendorGameState {
         return false;
     }
 
-    public boolean reserveAction(int playerID, Card cardToReserve) {
-        switch(playerID){
+    public boolean reserveAction(Card cardToReserve) {
+        switch(this.getPlayerTurn()){
             case 1:
-                if (this.p1NumCardsReserved == 3) {
+                if (this.p1Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -694,7 +715,7 @@ public class SplendorGameState {
                 }
                 break;
             case 2:
-                if (this.p2NumCardsReserved == 3) {
+                if (this.p2Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -703,7 +724,7 @@ public class SplendorGameState {
                 }
                 break;
             case 3:
-                if (this.p3NumCardsReserved == 3) {
+                if (this.p3Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -712,7 +733,7 @@ public class SplendorGameState {
                 }
                 break;
             case 4:
-                if (this.p4NumCardsReserved == 3) {
+                if (this.p4Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -909,6 +930,7 @@ public class SplendorGameState {
                 break;
         }
     }
+
     public String getPlayer1Name() {
         return player1Name;
     }
