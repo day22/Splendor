@@ -19,18 +19,20 @@ import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    TextView textBox = findViewById(R.id.printVals);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
         Log.d("onCreate","here");
-        TextView textBox = findViewById(R.id.printVals);
         Button testButton = findViewById(R.id.test_run);
         testButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        TextView textBox = findViewById(R.id.printVals);
         InputStream rank1 = getResources().openRawResource(R.raw.rank1);
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
@@ -40,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
+
+        textBox.append("Player 1 will take two Ruby Coins, is this action legal: " + firstInstance.coinAction(0));
+        textBox.append("Player 2 will take 1 Sapphire, Emerald, and Diamond coin, is this action legal: "+firstInstance.coinAction(1, 2, 3));
+        textBox.append("Player 3 will reserve a rank 1 card, is this action legal: "+firstInstance.reserveAction(firstInstance.getBoard(2,1)));
+        textBox.append("Player 4 will reserve a rank 1 card, is this action legal: "+firstInstance.cardAction(firstInstance.getBoard(2, 4)));
 
         //actions
 
@@ -53,12 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateText(SplendorGameState gameState) {
-        TextView textBox = findViewById(R.id.printVals);
         Log.d("update text 1 params","here");
         textBox.append(gameState.toString());
     }
     private void updateText() {
-        TextView textBox = findViewById(R.id.printVals);
         textBox.setText("");
         Log.d("update text no params","here");
     }
