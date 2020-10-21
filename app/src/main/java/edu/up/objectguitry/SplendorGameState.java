@@ -53,7 +53,6 @@ public class SplendorGameState {
 
     //reserve cards count
     private int p1NumCardsReserved;
-    private ArrayList<Card> p1ReserveCards;
 
 //~~~~~~~~~~~~~~~~ player 2 ~~~~~~~~~~~~~~~~~~ //
 
@@ -78,7 +77,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p2NumCardsReserved;
-    private ArrayList<Card> p2ReserveCards;
 
 
 //~~~~~~~~~~~~~~~~ player 3 ~~~~~~~~~~~~~~~~~~ //
@@ -104,7 +102,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p3NumCardsReserved;
-    private ArrayList<Card> p3ReserveCards;
 
 
 //~~~~~~~~~~~~~~~~ player 4 ~~~~~~~~~~~~~~~~~~ //
@@ -130,7 +127,6 @@ public class SplendorGameState {
 
     //reserve card count
     private int p4NumCardsReserved;
-    private ArrayList<Card> p4ReserveCards;
 
 //~~~~~~~~~~~~~~~~~~ Deck and Coin Information ~~~~~~~~~~~~~~~ //
 
@@ -157,7 +153,6 @@ public class SplendorGameState {
     /*
      *New Game Constructor
      * TODO
-     *  -figure out  file reading for initializing deck array lists
      *  -possibly add noble/card visibility boolean instance variables
      */
 //~~~~~~~~~~~~~~~~~~ Hand Informtion ~~~~~~~~~~~~~ //
@@ -230,10 +225,6 @@ public class SplendorGameState {
         this.p1DiamondCoins = stateToCopy.getP1DiamondCoins();
         this.p1PrestigePts = stateToCopy.getP1OnyxPts();
         this.p1NumCardsReserved = stateToCopy.getP1NumCardsReserved();
-        this.p1ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p1ReserveCards) {
-            this.p1ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 2 points and reserve cards
         this.p2GoldCoins = stateToCopy.getP2GoldCoins();
@@ -250,10 +241,6 @@ public class SplendorGameState {
         this.p2DiamondCoins = stateToCopy.getP2DiamondCoins();
         this.p2PrestigePts = stateToCopy.getP2OnyxPts();
         this.p2NumCardsReserved = stateToCopy.getP2NumCardsReserved();
-        this.p2ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p2ReserveCards) {
-            this.p2ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 3 points and reserve cards
         this.p3GoldCoins = stateToCopy.getP3GoldCoins();
@@ -270,10 +257,6 @@ public class SplendorGameState {
         this.p3DiamondCoins = stateToCopy.getP3DiamondCoins();
         this.p3PrestigePts = stateToCopy.getP3OnyxPts();
         this.p3NumCardsReserved = stateToCopy.getP3NumCardsReserved();
-        this.p3ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p3ReserveCards) {
-            this.p3ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copy of player 4 points and reserve cards
         this.p4GoldCoins = stateToCopy.getP4GoldCoins();
@@ -290,10 +273,6 @@ public class SplendorGameState {
         this.p4DiamondCoins = stateToCopy.getP4DiamondCoins();
         this.p4PrestigePts = stateToCopy.getP4OnyxPts();
         this.p4NumCardsReserved = stateToCopy.getP4NumCardsReserved();
-        this.p4ReserveCards = new ArrayList<Card>();
-        for (Card card : stateToCopy.p4ReserveCards) {
-            this.p4ReserveCards.add(new Card(card)); //uses copy constructor in card
-        }
 
         //deep copies for all 3 card stacks
         this.rank1Stack = new ArrayList<>();
@@ -319,66 +298,67 @@ public class SplendorGameState {
 
     //helper method for constructor setting all point values for player to zero
     public void initializePlayerPointValues() {
+        this.playerTurn = 1;
         //player one
         this.p1GoldCoins = 0;
         this.p1GoldPts = 0;
         this.p1EmeraldCoins = 0;
-        this.p1EmeraldPts = 0;
+        this.p1EmeraldPts = 4;
         this.p1SapphireCoins = 0;
-        this.p1SapphirePts = 0;
+        this.p1SapphirePts = 4;
         this.p1RubyCoins = 0;
-        this.p1RubyPts = 0;
+        this.p1RubyPts = 4;
         this.p1OnyxCoins = 0;
-        this.p1OnyxPts = 0;
+        this.p1OnyxPts = 4;
         this.p1DiamondCoins = 0;
+        this.p1DiamondPts = 4;
         this.p1PrestigePts = 0;
         this.p1NumCardsReserved = 0;
-        this.p1ReserveCards = new ArrayList<Card>();
 
         this.p2GoldCoins = 0;
         this.p2GoldPts = 0;
         this.p2EmeraldCoins = 0;
-        this.p2EmeraldPts = 0;
+        this.p2EmeraldPts = 4;
         this.p2SapphireCoins = 0;
-        this.p2SapphirePts = 0;
-        this.p2RubyCoins = 0;
-        this.p2RubyPts = 0;
+        this.p2SapphirePts = 4;
+        this.p2RubyCoins = 4;
+        this.p2RubyPts = 4;
         this.p2OnyxCoins = 0;
-        this.p2OnyxPts = 0;
+        this.p2OnyxPts = 4;
         this.p2DiamondCoins = 0;
+        this.p2DiamondPts = 4;
         this.p2PrestigePts = 0;
         this.p2NumCardsReserved = 0;
-        this.p2ReserveCards = new ArrayList<Card>();
 
         this.p3GoldCoins = 0;
         this.p3GoldPts = 0;
         this.p3EmeraldCoins = 0;
-        this.p3EmeraldPts = 0;
+        this.p3EmeraldPts = 4;
         this.p3SapphireCoins = 0;
-        this.p3SapphirePts = 0;
+        this.p3SapphirePts = 4;
         this.p3RubyCoins = 0;
-        this.p3RubyPts = 0;
+        this.p3RubyPts = 4;
         this.p3OnyxCoins = 0;
-        this.p3OnyxPts = 0;
+        this.p3OnyxPts = 4;
         this.p3DiamondCoins = 0;
+        this.p3DiamondPts = 4;
         this.p3PrestigePts = 0;
         this.p3NumCardsReserved = 0;
-        this.p3ReserveCards = new ArrayList<Card>();
 
         this.p4GoldCoins = 0;
         this.p4GoldPts = 0;
         this.p4EmeraldCoins = 0;
-        this.p4EmeraldPts = 0;
+        this.p4EmeraldPts = 4;
         this.p4SapphireCoins = 0;
-        this.p4SapphirePts = 0;
+        this.p4SapphirePts = 4;
         this.p4RubyCoins = 0;
-        this.p4RubyPts = 0;
+        this.p4RubyPts = 4;
         this.p4OnyxCoins = 0;
-        this.p4OnyxPts = 0;
+        this.p4OnyxPts = 4;
         this.p4DiamondCoins = 0;
+        this.p4DiamondPts = 4;
         this.p4PrestigePts = 0;
         this.p4NumCardsReserved = 0;
-        this.p4ReserveCards = new ArrayList<Card>();
     }
 
     public void initializeBoard(ArrayList<Card> rank1, ArrayList<Card> rank2, ArrayList<Card> rank3){
@@ -396,7 +376,6 @@ public class SplendorGameState {
         this.board[0][3] = rank3.remove(0);
     }
 
-    //TODO file reading from three rank text files
     /*initialize Decks
      * reads input from text files into three array lists then shuffles deck
      *
@@ -671,7 +650,7 @@ public class SplendorGameState {
                 "\nSapphire: " + sapphireCoins +
                 "\nRuby: " + rubyCoins +
                 "\nDiamond: " + diamondCoins +
-                "\nOnyx: " + onyxCoins;
+                "\nOnyx: " + onyxCoins + "\n";
 
 
 
@@ -727,31 +706,6 @@ public class SplendorGameState {
     }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
-
-    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
-    public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
-        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
-            individualCoinAction(coinColor1);
-            individualCoinAction(coinColor2);
-            individualCoinAction(coinColor3);
-            nextPlayerTurn();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean coinAction(int coinColor)
-    {
-        if (coinCheckDoubles(coinColor)){
-            individualCoinAction(coinColor);
-            individualCoinAction(coinColor);
-            nextPlayerTurn();
-            return true;
-        }
-        return false;
-    }
-
-
 
     /* TODO: HOW DO WE WANT THEM TO BUY THE CARD? CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
         - NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
@@ -837,7 +791,7 @@ public class SplendorGameState {
     public boolean reserveAction(Card cardToReserve) {
         switch(this.getPlayerTurn()){
             case 1:
-                if (this.p1Hand.canReserve()) {
+                if (!this.p1Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -846,7 +800,7 @@ public class SplendorGameState {
                 }
                 break;
             case 2:
-                if (this.p2Hand.canReserve()) {
+                if (!this.p2Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -855,7 +809,7 @@ public class SplendorGameState {
                 }
                 break;
             case 3:
-                if (this.p3Hand.canReserve()) {
+                if (!this.p3Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -864,7 +818,7 @@ public class SplendorGameState {
                 }
                 break;
             case 4:
-                if (this.p4Hand.canReserve()) {
+                if (!this.p4Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -886,6 +840,31 @@ public class SplendorGameState {
     public void setPlayerTurn(int playerID) {
         this.playerTurn = playerID;
     }
+
+    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
+    public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
+        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
+            individualCoinAction(coinColor1);
+            individualCoinAction(coinColor2);
+            individualCoinAction(coinColor3);
+            nextPlayerTurn();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean coinAction(int coinColor)
+    {
+        if (coinCheckDoubles(coinColor)){
+            individualCoinAction(coinColor);
+            individualCoinAction(coinColor);
+            nextPlayerTurn();
+            return true;
+        }
+        return false;
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~helper methods~~~~~~~~~~~~~~~~~~~*/
 
     //FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF THE SINGLE COIN GRABS ARE LEGAL
     private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) { //checks if current player can
@@ -1154,10 +1133,6 @@ public class SplendorGameState {
         return p1NumCardsReserved;
     }
 
-    public ArrayList<Card> getP1ReserveCards() {
-        return p1ReserveCards;
-    }
-
     public int getP2PrestigePts() {
         return p2PrestigePts;
     }
@@ -1212,10 +1187,6 @@ public class SplendorGameState {
 
     public int getP2NumCardsReserved() {
         return p2NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP2ReserveCards() {
-        return p2ReserveCards;
     }
 
     public int getP3PrestigePts() {
@@ -1274,10 +1245,6 @@ public class SplendorGameState {
         return p3NumCardsReserved;
     }
 
-    public ArrayList<Card> getP3ReserveCards() {
-        return p3ReserveCards;
-    }
-
     public int getP4PrestigePts() {
         return p4PrestigePts;
     }
@@ -1332,10 +1299,6 @@ public class SplendorGameState {
 
     public int getP4NumCardsReserved() {
         return p4NumCardsReserved;
-    }
-
-    public ArrayList<Card> getP4ReserveCards() {
-        return p4ReserveCards;
     }
 
     public ArrayList<Card> getRank1Stack() {
