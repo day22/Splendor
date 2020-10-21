@@ -597,12 +597,12 @@ public class SplendorGameState {
                 "\nOnyx: " + p4OnyxCoins +
                 "\nPlayer 4 number of Cards reserved: " + p4NumCardsReserved+
                 " "; //TODO go through reserve card array.
-/*
+
         n1 = "\n\nNoble 1: " + noble1.toString();
         n2 = "\n\nNoble 2: " + noble2.toString();
         n3 = "\n\nNoble 2: " + noble3.toString();
         n4 = "\n\nNoble 2: " + noble4.toString();
-    */
+
         coinToString = "\n\nCoins in the Bank: " +
                 "\nGold: "+ goldCoins +
                 "\nEmerald: " + emeraldCoins +
@@ -613,8 +613,8 @@ public class SplendorGameState {
 
         currGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
-// + n2 + n3 + n4
-        returnString = currGame + p1 + p2 + p3 + p4 + coinToString;
+//n1 + n2 + n3 + n4 +
+        returnString = currGame + p1 + p2 + p3 + p4 + n1 + n2 + n3 + n4 + coinToString;
 
         return returnString;
     }
