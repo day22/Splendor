@@ -1,5 +1,14 @@
 package edu.up.objectguitry;
 
+import android.inputmethodservice.InputMethodService;
+import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -171,7 +180,9 @@ public class SplendorGameState {
         initializeDecks(); //unfinished
         initializeHands();
         initializeCoins();
-        
+
+        initializeDecks(rank1, rank2, rank3); //unfinished
+        initializeHands();
     }
 
 
@@ -355,10 +366,87 @@ public class SplendorGameState {
      * reads input from text files into three array lists then shuffles deck
      *
      */
-    public void initializeDecks() {
+    public void initializeDecks(InputStream rank1, InputStream rank2, InputStream rank3) {
         this.rank1Stack = new ArrayList<Card>();
         this.rank2Stack = new ArrayList<Card>();
         this.rank3Stack = new ArrayList<Card>();
+
+        //reading data for rank 1
+        BufferedReader rank1Reader = new BufferedReader(
+                new InputStreamReader(rank1, Charset.forName("UTF-8"))
+        );
+
+        String line = "";
+        try {
+            while((line = rank1Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setColorGem(Integer.parseInt(tokens[0]));
+                card.setPrestigePoints(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(1);
+                this.rank1Stack.add(card);
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
+
+        //reading data for rank 2
+        BufferedReader rank2Reader = new BufferedReader(
+                new InputStreamReader(rank2, Charset.forName("UTF-8"))
+        );
+
+        line = "";
+        try {
+            while((line = rank2Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setPrestigePoints(Integer.parseInt(tokens[0]));
+                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(2);
+                this.rank2Stack.add(card);
+
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
+
+        //reading data for rank 3
+        BufferedReader rank3Reader = new BufferedReader(
+                new InputStreamReader(rank1, Charset.forName("UTF-8"))
+        );
+
+        line = "";
+        try {
+            while((line = rank3Reader.readLine()) != null) {
+                //split by ,
+                String[] tokens = line.split(",");
+                Card card = new Card();
+                card.setPrestigePoints(Integer.parseInt(tokens[0]));
+                card.setColorGem(Integer.parseInt(tokens[1]));
+                card.setwPrice(Integer.parseInt(tokens[2]));
+                card.setbPrice(Integer.parseInt(tokens[3]));
+                card.setgPrice(Integer.parseInt(tokens[4]));
+                card.setrPrice(Integer.parseInt(tokens[5]));
+                card.setBrPrice(Integer.parseInt(tokens[6]));
+                card.setCardLevel(3);
+                this.rank3Stack.add(card);
+
+            }
+        } catch (IOException e) {
+            Log.wtf("MyActivity","Error reading data file " + line, e);
+        }
     }
 
     public void initializeHands() {
@@ -1004,6 +1092,7 @@ public class SplendorGameState {
         }
         return false;
     }
+
 
     private boolean p1coinCountBool() {
         if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10)
