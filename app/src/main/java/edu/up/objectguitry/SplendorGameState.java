@@ -481,7 +481,7 @@ public class SplendorGameState {
         this.onyxCoins = 7;
         this.goldCoins = 5;
     }
-
+    
     public String getPlayer1Name() {
         return player1Name;
     }
