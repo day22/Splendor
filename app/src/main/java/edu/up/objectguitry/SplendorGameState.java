@@ -1,16 +1,12 @@
 package edu.up.objectguitry;
 
-import android.inputmethodservice.InputMethodService;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -142,6 +138,7 @@ public class SplendorGameState {
     private ArrayList<Card> rank2Stack; //ArrayList of rank2 cards
     private ArrayList<Card> rank3Stack; //ArrayList of rank3 cards
 
+    // some could be unused, dependent on num players
     private Noble noble1;// = new Noble(1,2,3,4,5,15); //used for tostring tests
     private Noble noble2;
     private Noble noble3;
@@ -180,7 +177,8 @@ public class SplendorGameState {
 
     public SplendorGameState(InputStream rank1, InputStream rank2, InputStream rank3) {
         initializePlayerPointValues();
-        initializeHands();
+        //initializeDecks(); //unfinished
+        //initializeHands();
         initializeCoins();
 
         initializeDecks(rank1, rank2, rank3); //unfinished
@@ -215,6 +213,7 @@ public class SplendorGameState {
         this.p1RubyPts = stateToCopy.getP1RubyPts();
         this.p1OnyxCoins = stateToCopy.getP1OnyxCoins();
         this.p1OnyxPts = stateToCopy.getP1OnyxPts();
+        this.p1DiamondPts = stateToCopy.getP1DiamondPts();
         this.p1DiamondCoins = stateToCopy.getP1DiamondCoins();
         this.p1PrestigePts = stateToCopy.getP1OnyxPts();
         this.p1NumCardsReserved = stateToCopy.getP1NumCardsReserved();
@@ -234,6 +233,7 @@ public class SplendorGameState {
         this.p2RubyPts = stateToCopy.getP2RubyPts();
         this.p2OnyxCoins = stateToCopy.getP2OnyxCoins();
         this.p2OnyxPts = stateToCopy.getP2OnyxPts();
+        this.p2DiamondPts = stateToCopy.getP2DiamondPts();
         this.p2DiamondCoins = stateToCopy.getP2DiamondCoins();
         this.p2PrestigePts = stateToCopy.getP2OnyxPts();
         this.p2NumCardsReserved = stateToCopy.getP2NumCardsReserved();
@@ -253,6 +253,7 @@ public class SplendorGameState {
         this.p3RubyPts = stateToCopy.getP3RubyPts();
         this.p3OnyxCoins = stateToCopy.getP3OnyxCoins();
         this.p3OnyxPts = stateToCopy.getP3OnyxPts();
+        this.p3DiamondPts = stateToCopy.getP3DiamondPts();
         this.p3DiamondCoins = stateToCopy.getP3DiamondCoins();
         this.p3PrestigePts = stateToCopy.getP3OnyxPts();
         this.p3NumCardsReserved = stateToCopy.getP3NumCardsReserved();
@@ -272,6 +273,7 @@ public class SplendorGameState {
         this.p4RubyPts = stateToCopy.getP4RubyPts();
         this.p4OnyxCoins = stateToCopy.getP4OnyxCoins();
         this.p4OnyxPts = stateToCopy.getP4OnyxPts();
+        this.p4DiamondPts = stateToCopy.getP4DiamondPts();
         this.p4DiamondCoins = stateToCopy.getP4DiamondCoins();
         this.p4PrestigePts = stateToCopy.getP4OnyxPts();
         this.p4NumCardsReserved = stateToCopy.getP4NumCardsReserved();
@@ -834,7 +836,8 @@ public class SplendorGameState {
                 "\nDiamond: " + p2DiamondCoins +
                 "\nOnyx: " + p2OnyxCoins +
                 "\nPlayer 2 number of Cards reserved: " + p2NumCardsReserved+
-                " "; //TODO go through reserve card array.
+                "\nPlayer 2 cards reserved: ";
+        //TODO go through reserve card array.
 
         p3 = "\n\nPlayer 3 name: " + player3Name +
                 "\nPlayer 3 Prestige Points: " + p3PrestigePts +
@@ -1057,7 +1060,7 @@ public class SplendorGameState {
     }
 
     //FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF THE SINGLE COIN GRABS ARE LEGAL
-    private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) {
+    private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) { //checks if current player can
 
         boolean flag1 = coinPileCheck()[coinColor];
         boolean flag2 = coinPileCheck()[coinColor2];
@@ -1088,7 +1091,7 @@ public class SplendorGameState {
         return false;
     }
 
-    private boolean coinCheckDoubles(int coinColor)
+    private boolean coinCheckDoubles(int coinColor) // checks if current player can take 2 coins of same color
     {
         boolean flag = coinPileCheckDoubles()[coinColor];
         switch (this.getPlayerTurn()){
@@ -1107,7 +1110,6 @@ public class SplendorGameState {
         }
         return false;
     }
-
 
     private boolean p1coinCountBool() {
         if(this.p1DiamondCoins+this.p1EmeraldCoins+this.p1OnyxCoins+this.p1RubyCoins+this.p1SapphireCoins+this.p1GoldCoins >= 10)

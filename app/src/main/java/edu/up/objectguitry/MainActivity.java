@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.InputStream;
 
-
-import com.opencsv.CSVReader;
-
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
+
         //actions
-        SplendorGameState thirdInstance = new SplendorGameState();
+        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
         updateText(secondInstance);
         updateText(fourthInstance);
