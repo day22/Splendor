@@ -501,18 +501,18 @@ public class SplendorGameState {
     public String toString(){
         //p refers to player, n refers to noble, TS refers to ToString
         String p1, p2, p3, p4, playerTS, n1, n2, n3, n4, nobleTS, coinToString, returnString, newGame, GameInfoTS, allCardsTS;
-        String p1_Reserve = null;
-        String p2_Reserve = null;
-        String p3_Reserve = null;
-        String p4_Reserve = null;
-        String p1HandTS = null;
-        String p2HandTS = null;
-        String p3HandTS = null;
-        String p4HandTS = null;
-        String rank1Cards = null;
-        String rank2Cards = null;
-        String rank3Cards = null;
-        String currBoardTS = null;
+        String p1_Reserve = "";
+        String p2_Reserve = "";
+        String p3_Reserve = "";
+        String p4_Reserve = "";
+        String p1HandTS = "";
+        String p2HandTS = "";
+        String p3HandTS = "";
+        String p4HandTS = "";
+        String rank1Cards = "";
+        String rank2Cards = "";
+        String rank3Cards = "";
+        String currBoardTS = "";
 
         newGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
@@ -651,9 +651,6 @@ public class SplendorGameState {
                 "\nRuby: " + rubyCoins +
                 "\nDiamond: " + diamondCoins +
                 "\nOnyx: " + onyxCoins + "\n";
-
-
-
 
 
         for (Card rank1: rank1Stack ) {

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void updateText() {
         this.textBox.setText("");
-        this.textBox.setText("For the sake of testing, all players will be given 4 coins to be able to buy cards");
+        this.textBox.setText("For the sake of testing, all players will be given 4 points of coin values to be able to buy cards");
         Log.d("update text no params","here");
     }
 }

@@ -52,15 +52,14 @@ public class Card {
         String ret;
         ret = "\n----" +
                 "\nCard Level: " + cardLevel +
-                "\nGem Color: " + colorGem +
-                "\nPrestige Points:  " + prestigePoints +
-                "\nPrice of Card: " +
-                "\nRuby: " + rPrice +
-                "\nSapphire: " + bPrice +
-                "\nEmerald: " + gPrice +
-                "\nDiamond: " + wPrice +
-                "\nOnyx: " + brPrice +
-                "\n----";
+                "\t Gem Color: " + colorGem +
+                "\t Prestige Points:  " + prestigePoints +
+                "\t Price of Card: " +
+                "\t Ruby: " + rPrice +
+                "\t Sapphire: " + bPrice +
+                "\t Emerald: " + gPrice +
+                "\t Diamond: " + wPrice +
+                "\t Onyx: " + brPrice;
 
 
         return ret;
