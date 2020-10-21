@@ -297,6 +297,11 @@ public class SplendorGameState {
         for (Card rankCard : stateToCopy.rank3Stack) {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
+
+        this.noble1 = stateToCopy.getNoble1();
+        this.noble2 = stateToCopy.getNoble2();
+        this.noble3 = stateToCopy.getNoble3();
+        this.noble4 = stateToCopy.getNoble4();
     }
 
     //helper method for constructor setting all point values for player to zero
