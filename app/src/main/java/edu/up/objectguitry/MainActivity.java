@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splendor_run_test);
-        Log.d("onCreate","here");
+
          this.textBox = findViewById(R.id.printVals);
+
         Button testButton = findViewById(R.id.test_run);
         testButton.setOnClickListener(this);
     }
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InputStream rank1 = getResources().openRawResource(R.raw.rank1);
         InputStream rank2 = getResources().openRawResource(R.raw.rank2);
         InputStream rank3 = getResources().openRawResource(R.raw.rank3);
-        Log.d("onClick","here");
         updateText();
         SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
@@ -52,12 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateText(SplendorGameState gameState) {
-        Log.d("update text 1 params","here");
         this.textBox.append(gameState.toString());
     }
     private void updateText() {
         this.textBox.setText("");
         this.textBox.setText("For the sake of testing, all players will be given 4 coins to be able to buy cards");
-        Log.d("update text no params","here");
     }
 }

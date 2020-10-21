@@ -15,7 +15,6 @@ public class SplendorGameState {
 
     //~~~~~~~~~~~~~ player names and IDs ~~~~~~~~~~~ //
     //player display names
-    //TODO figure out how to get the player names from super class.
     private String player1Name;
     private String player2Name;
     private String player3Name;
@@ -152,10 +151,8 @@ public class SplendorGameState {
 
     /*
      *New Game Constructor
-     * TODO
-     *  -possibly add noble/card visibility boolean instance variables
      */
-//~~~~~~~~~~~~~~~~~~ Hand Informtion ~~~~~~~~~~~~~ //
+//~~~~~~~~~~~~~~~~~~ Hand Information ~~~~~~~~~~~~~ //
 
     //all players' hands
     private Hand p1Hand;
@@ -192,7 +189,7 @@ public class SplendorGameState {
     /*
      *
      * Deep copy constructor
-     * TODO add nobles and card visibility
+     *
      */
     public SplendorGameState(SplendorGameState stateToCopy) {
 
@@ -501,18 +498,18 @@ public class SplendorGameState {
     public String toString(){
         //p refers to player, n refers to noble, TS refers to ToString
         String p1, p2, p3, p4, playerTS, n1, n2, n3, n4, nobleTS, coinToString, returnString, newGame, GameInfoTS, allCardsTS;
-        String p1_Reserve = null;
-        String p2_Reserve = null;
-        String p3_Reserve = null;
-        String p4_Reserve = null;
-        String p1HandTS = null;
-        String p2HandTS = null;
-        String p3HandTS = null;
-        String p4HandTS = null;
-        String rank1Cards = null;
-        String rank2Cards = null;
-        String rank3Cards = null;
-        String currBoardTS = null;
+        String p1_Reserve = "";
+        String p2_Reserve = "";
+        String p3_Reserve = "";
+        String p4_Reserve = "";
+        String p1HandTS = "";
+        String p2HandTS = "";
+        String p3HandTS = "";
+        String p4HandTS = "";
+        String rank1Cards = "";
+        String rank2Cards = "";
+        String rank3Cards = "";
+        String currBoardTS = "";
 
         newGame = "\n~~~~~~~~~~~~~~~New Game Instance~~~~~~~~~~~~~~~";
 
@@ -707,9 +704,6 @@ public class SplendorGameState {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
 
-    /* TODO: HOW DO WE WANT THEM TO BUY THE CARD? CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
-        - NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
-    */
     public boolean cardAction(Card cardToBuy) {
         switch(this.getPlayerTurn()){
             case 1:
@@ -841,7 +835,7 @@ public class SplendorGameState {
         this.playerTurn = playerID;
     }
 
-    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
+
     public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
         if(coinCheck(coinColor1, coinColor2, coinColor3)) {
             individualCoinAction(coinColor1);
@@ -866,7 +860,7 @@ public class SplendorGameState {
 
     /*~~~~~~~~~~~~~~~~~~~~~helper methods~~~~~~~~~~~~~~~~~~~*/
 
-    //FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF THE SINGLE COIN GRABS ARE LEGAL
+
     private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) { //checks if current player can
 
         boolean flag1 = coinPileCheck()[coinColor];
@@ -1040,6 +1034,8 @@ public class SplendorGameState {
                 break;
         }
     }
+
+    //Getter methods
 
     public String getPlayer1Name() {
         return player1Name;
