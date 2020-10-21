@@ -23,6 +23,17 @@ public class Card {
         this.cardLevel = cardLevel;
         this.prestigePoints = prestigePoints;
     }
+    //card factory constructor
+    public Card() {
+        this.rPrice = 0;
+        this.bPrice = 0;
+        this.gPrice = 0;
+        this.wPrice = 0;
+        this.brPrice = 0;
+        this.colorGem = 0;
+        this.cardLevel = 0;
+        this.prestigePoints = 0;
+    }
 
     //Copy Constructor
     public Card(Card cardToCopy) {

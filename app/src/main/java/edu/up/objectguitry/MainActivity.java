@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import java.io.InputStream;
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -24,14 +28,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        InputStream rank1 = getResources().openRawResource(R.raw.rank1);
+        InputStream rank2 = getResources().openRawResource(R.raw.rank2);
+        InputStream rank3 = getResources().openRawResource(R.raw.rank3);
+
         Log.d("onClick","here");
         updateText();
-        SplendorGameState firstInstance = new SplendorGameState();
+        SplendorGameState firstInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
 
         //actions
-        SplendorGameState thirdInstance = new SplendorGameState();
+        SplendorGameState thirdInstance = new SplendorGameState(rank1, rank2, rank3);
         SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
         updateText(secondInstance);
         updateText(fourthInstance);

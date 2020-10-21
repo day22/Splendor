@@ -18,6 +18,7 @@ public class Noble {
         this.prestigePoints = prestigePoints;
     }
 
+
     //COPY CONSTRUCTOR
     public Noble(Noble nobelToCopy){
         this.rPrice = nobelToCopy.rPrice;
