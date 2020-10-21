@@ -7,15 +7,14 @@ public class Noble {
     private int wPrice;
     private int brPrice;
 
-    private int prestigePoints;
+    private final int PRESTIGE_POINTS = 3;
 
-    public Noble(int rPrice, int bPrice, int gPrice, int wPrice, int brPrice, int prestigePoints){
+    public Noble(int rPrice, int bPrice, int gPrice, int wPrice, int brPrice){
         this.rPrice = rPrice;
         this.bPrice = bPrice;
         this.gPrice = gPrice;
         this.wPrice = wPrice;
         this.brPrice = brPrice;
-        this.prestigePoints = prestigePoints;
     }
 
 
@@ -26,14 +25,12 @@ public class Noble {
         this.gPrice = nobelToCopy.gPrice;
         this.wPrice = nobelToCopy.wPrice;
         this.brPrice = nobelToCopy.brPrice;
-        this.prestigePoints = nobelToCopy.prestigePoints;
     }
 
     @Override
     public String toString(){
         String ret;
-        ret = "\nPrestige Points:  " + prestigePoints +
-                "\nPrice of Noble: " +
+        ret = "\nPrice of Noble: " +
                 "\nRuby: " + rPrice +
                 "\nSapphire: " + bPrice +
                 "\nEmerald: " + gPrice +
@@ -85,10 +82,6 @@ public class Noble {
     }
 
     public int getPrestigePoints() {
-        return prestigePoints;
-    }
-
-    public void setPrestigePoints(int prestigePoints) {
-        this.prestigePoints = prestigePoints;
+        return PRESTIGE_POINTS;
     }
 }
