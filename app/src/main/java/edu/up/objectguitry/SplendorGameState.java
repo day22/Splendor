@@ -710,7 +710,7 @@ public class SplendorGameState {
     public boolean reserveAction(Card cardToReserve) {
         switch(this.getPlayerTurn()){
             case 1:
-                if (this.p1Hand.canReserve()) {
+                if (!this.p1Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -719,7 +719,7 @@ public class SplendorGameState {
                 }
                 break;
             case 2:
-                if (this.p2Hand.canReserve()) {
+                if (!this.p2Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -728,7 +728,7 @@ public class SplendorGameState {
                 }
                 break;
             case 3:
-                if (this.p3Hand.canReserve()) {
+                if (!this.p3Hand.canReserve()) {
                     return false;
                 }
                 else {
@@ -737,7 +737,7 @@ public class SplendorGameState {
                 }
                 break;
             case 4:
-                if (this.p4Hand.canReserve()) {
+                if (!this.p4Hand.canReserve()) {
                     return false;
                 }
                 else {
