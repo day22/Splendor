@@ -196,6 +196,14 @@ public class SplendorGameState {
      */
     public SplendorGameState(SplendorGameState stateToCopy) {
 
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                this.board[i][j] = stateToCopy.getBoard(i, j);
+            }
+        }
+
         //creates deeps copy of each players hands
         this.p1Hand = new Hand(stateToCopy.p1Hand);
         this.p2Hand = new Hand(stateToCopy.p2Hand);
@@ -364,18 +372,18 @@ public class SplendorGameState {
     }
 
     public void initializeBoard(ArrayList<Card> rank1, ArrayList<Card> rank2, ArrayList<Card> rank3){
-        this.board[2][0] = rank1.get(this.stack1Iterator++);
-        this.board[2][1] = rank1.get(this.stack1Iterator++);
-        this.board[2][2] = rank1.get(this.stack1Iterator++);
-        this.board[2][3] = rank1.get(this.stack1Iterator++);
-        this.board[1][0] = rank2.get(this.stack2Iterator++);
-        this.board[1][1] = rank2.get(this.stack2Iterator++);
-        this.board[1][2] = rank2.get(this.stack2Iterator++);
-        this.board[1][3] = rank2.get(this.stack2Iterator++);
-        this.board[0][0] = rank2.get(this.stack3Iterator++);
-        this.board[0][1] = rank3.get(this.stack3Iterator++);
-        this.board[0][2] = rank3.get(this.stack3Iterator++);
-        this.board[0][3] = rank3.get(this.stack3Iterator++);
+        this.board[2][0] = rank1.remove(0);
+        this.board[2][1] = rank1.remove(0);
+        this.board[2][2] = rank1.remove(0);
+        this.board[2][3] = rank1.remove(0);
+        this.board[1][0] = rank2.remove(0);
+        this.board[1][1] = rank2.remove(0);
+        this.board[1][2] = rank2.remove(0);
+        this.board[1][3] = rank2.remove(0);
+        this.board[0][0] = rank3.remove(0);
+        this.board[0][1] = rank3.remove(0);
+        this.board[0][2] = rank3.remove(0);
+        this.board[0][3] = rank3.remove(0);
     }
 
     //TODO file reading from three rank text files
@@ -441,7 +449,7 @@ public class SplendorGameState {
 
         //reading data for rank 3
         BufferedReader rank3Reader = new BufferedReader(
-                new InputStreamReader(rank1, Charset.forName("UTF-8"))
+                new InputStreamReader(rank3, Charset.forName("UTF-8"))
         );
 
         line = "";
@@ -459,7 +467,6 @@ public class SplendorGameState {
                 card.setBrPrice(Integer.parseInt(tokens[6]));
                 card.setCardLevel(3);
                 this.rank3Stack.add(card);
-
             }
         } catch (IOException e) {
             Log.wtf("MyActivity","Error reading data file " + line, e);
@@ -485,7 +492,7 @@ public class SplendorGameState {
     public Card getBoard(int row, int col){
         return this.board[row][col];
     }
-    
+
     public String getPlayer1Name() {
         return player1Name;
     }
