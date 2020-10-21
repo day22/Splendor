@@ -627,7 +627,7 @@ public class SplendorGameState {
 
     /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
     public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
-        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
+        if( coinCheck(coinColor1, coinColor2, coinColor3) ) {
             individualCoinAction(coinColor1);
             individualCoinAction(coinColor2);
             individualCoinAction(coinColor3);
