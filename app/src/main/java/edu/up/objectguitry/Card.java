@@ -14,7 +14,6 @@ public class Card {
     private int cardLevel;
     private int prestigePoints;
 
-    private static ArrayList<Card> cardLayout;
 
     public Card(int rPrice, int bPrice, int gPrice, int wPrice, int brPrice, int colorGem, int cardLevel, int prestigePoints) {
         this.rPrice = rPrice;

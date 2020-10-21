@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         SplendorGameState firstInstance = new SplendorGameState();
         SplendorGameState secondInstance = new SplendorGameState(firstInstance);
         updateText(firstInstance);
+
         //actions
         SplendorGameState thirdInstance = new SplendorGameState();
         SplendorGameState fourthInstance = new SplendorGameState(thirdInstance);
