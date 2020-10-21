@@ -319,6 +319,7 @@ public class SplendorGameState {
 
     //helper method for constructor setting all point values for player to zero
     public void initializePlayerPointValues() {
+        this.playerTurn = 1;
         //player one
         this.p1GoldCoins = 0;
         this.p1GoldPts = 0;
@@ -534,7 +535,7 @@ public class SplendorGameState {
                 "\nRuby: " + p1RubyPts +
                 "\nDiamond: " + p1DiamondPts +
                 "\nOnyx: " + p1OnyxPts +
-                "Player 1 Coin Values: " +
+                "\nPlayer 1 Coin Values: " +
                 "\nGold: "+ p1GoldCoins +
                 "\nEmerald: " + p1EmeraldCoins +
                 "\nSapphire: " + p1SapphireCoins +
@@ -553,7 +554,7 @@ public class SplendorGameState {
                 "\nRuby: " + p2RubyPts +
                 "\nDiamond: " + p2DiamondPts +
                 "\nOnyx: " + p2OnyxPts +
-                "Player 2 Coin Values: " +
+                "\nPlayer 2 Coin Values: " +
                 "\nGold: "+ p2GoldCoins +
                 "\nEmerald: " + p2EmeraldCoins +
                 "\nSapphire: " + p2SapphireCoins +
@@ -573,7 +574,7 @@ public class SplendorGameState {
                 "\nRuby: " + p3RubyPts +
                 "\nDiamond: " + p3DiamondPts +
                 "\nOnyx: " + p3OnyxPts +
-                "Player 3 Coin Values: " +
+                "\nPlayer 3 Coin Values: " +
                 "\nGold: "+ p3GoldCoins +
                 "\nEmerald: " + p3EmeraldCoins +
                 "\nSapphire: " + p3SapphireCoins +
@@ -592,7 +593,7 @@ public class SplendorGameState {
                 "\nRuby: " + p4RubyPts +
                 "\nDiamond: " + p4DiamondPts +
                 "\nOnyx: " + p4OnyxPts +
-                "Player 4 Coin Values: " +
+                "\nPlayer 4 Coin Values: " +
                 "\nGold: "+ p4GoldCoins +
                 "\nEmerald: " + p4EmeraldCoins +
                 "\nSapphire: " + p4SapphireCoins +
@@ -624,31 +625,6 @@ public class SplendorGameState {
     }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~actions for #d~~~~~~~~~~~~~~~~~~~*/
-
-    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
-    public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
-        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
-            individualCoinAction(coinColor1);
-            individualCoinAction(coinColor2);
-            individualCoinAction(coinColor3);
-            nextPlayerTurn();
-            return true;
-        }
-        return false;
-    }
-
-    public boolean coinAction(int coinColor)
-    {
-        if (coinCheckDoubles(coinColor)){
-            individualCoinAction(coinColor);
-            individualCoinAction(coinColor);
-            nextPlayerTurn();
-            return true;
-        }
-        return false;
-    }
-
-
 
     /* TODO: HOW DO WE WANT THEM TO BUY THE CARD? CEMENT THIS NOW BECAUSE THIS WILL DEFINE HOW THE ACTION WILL FUNCTION
         - NEED CARD ARRAYS FUNCTIONING FOR THIS TO HAPPEN
@@ -784,6 +760,31 @@ public class SplendorGameState {
         this.playerTurn = playerID;
     }
 
+    /* TODO: IMPLEMENT COIN CHECK IN ORDER TO: CHECK COINS AVAILABLE, CHECK NUMBER OF COINS PLAYER HAS AND THEN SEPARATE INTO THE ACTUAL MOVES THEY CAN DO */
+    public boolean coinAction(int coinColor1, int coinColor2, int coinColor3) {
+        if(coinCheck(coinColor1, coinColor2, coinColor3)) {
+            individualCoinAction(coinColor1);
+            individualCoinAction(coinColor2);
+            individualCoinAction(coinColor3);
+            nextPlayerTurn();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean coinAction(int coinColor)
+    {
+        if (coinCheckDoubles(coinColor)){
+            individualCoinAction(coinColor);
+            individualCoinAction(coinColor);
+            nextPlayerTurn();
+            return true;
+        }
+        return false;
+    }
+
+    /*~~~~~~~~~~~~~~~~~~~~~helper methods~~~~~~~~~~~~~~~~~~~*/
+
     //FIGURE OUT WAY HOW TO TELL WHICH COINS ARE SELECTED, SO WE CAN PIN POINT IF THE SINGLE COIN GRABS ARE LEGAL
     private boolean coinCheck(int coinColor, int coinColor2, int coinColor3) { //checks if current player can
 
@@ -820,16 +821,16 @@ public class SplendorGameState {
     {
         boolean flag = coinPileCheckDoubles()[coinColor];
         switch (this.getPlayerTurn()){
-            case 1:
+            case 0:
                 if(p1coinCountBool() && flag) return true;
                 break;
-            case 2:
+            case 1:
                 if(p2coinCountBool() && flag) return true;
                 break;
-            case 3:
+            case 2:
                 if(p3coinCountBool() && flag) return true;
                 break;
-            case 4:
+            case 3:
                 if(p4coinCountBool() && flag) return true;
                 break;
         }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textBox.append("Player 1 will take two Ruby Coins, is this action legal: " + firstInstance.coinAction(0)+"\n");
         textBox.append("Player 2 will take 1 Sapphire, Emerald, and Diamond coin, is this action legal: "+firstInstance.coinAction(1, 2, 3)+"\n");
         textBox.append("Player 3 will reserve a rank 1 card, is this action legal: "+firstInstance.reserveAction(firstInstance.getBoard(2,1))+"\n");
-        textBox.append("Player 4 will reserve a rank 1 card, is this action legal: "+firstInstance.cardAction(firstInstance.getBoard(2, 2))+"\n");
+        textBox.append("Player 4 will buy a rank 1 card, is this action legal: "+firstInstance.cardAction(firstInstance.getBoard(2, 2))+"\n");
 
         //actions
 
