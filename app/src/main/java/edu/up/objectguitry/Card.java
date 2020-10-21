@@ -1,7 +1,5 @@
 package edu.up.objectguitry;
 
-import java.util.ArrayList;
-
 public class Card {
 
     private int rPrice;
@@ -11,16 +9,9 @@ public class Card {
     private int brPrice;
 
     private int colorGem;
-    private final int BLACKGEM = 1;
-    private final int BLUEGEM = 2;
-    private final int WHITEGEM = 3;
-    private final int GREENGEM = 4;
-    private final int REDGEM = 5;
-
     private int cardLevel;
     private int prestigePoints;
 
-    private static ArrayList<Card> cardLayout;
 
     public Card(int rPrice, int bPrice, int gPrice, int wPrice, int brPrice, int colorGem, int cardLevel, int prestigePoints) {
         this.rPrice = rPrice;
@@ -31,7 +22,6 @@ public class Card {
         this.colorGem = colorGem;
         this.cardLevel = cardLevel;
         this.prestigePoints = prestigePoints;
-        cardLayout = new ArrayList<Card>();
     }
     //card factory constructor
     public Card() {
