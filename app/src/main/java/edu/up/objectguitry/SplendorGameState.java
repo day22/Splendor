@@ -12,6 +12,7 @@ import java.nio.charset.Charset;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class SplendorGameState {
@@ -169,22 +170,26 @@ public class SplendorGameState {
 
 //~~~~~~~~~~~~~~~~~~~~~ Game State Specific Variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-    private int stack1Iterator;
-    private int stack2Iterator;
-    private int stack3Iterator;
+    private int stack1Iterator = 0;
+    private int stack2Iterator = 0;
+    private int stack3Iterator = 0;
+
+    private Card board[][] = new Card[3][4];
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-    public SplendorGameState() {
+    public SplendorGameState(InputStream rank1, InputStream rank2, InputStream rank3) {
         initializePlayerPointValues();
-        initializeDecks(); //unfinished
         initializeHands();
         initializeCoins();
 
         initializeDecks(rank1, rank2, rank3); //unfinished
         initializeHands();
+        Collections.shuffle(this.rank1Stack);
+        Collections.shuffle(this.rank2Stack);
+        Collections.shuffle(this.rank3Stack);
+        initializeBoard(this.rank1Stack, this.rank2Stack, this.rank3Stack);
     }
-
 
     /*
      *
@@ -290,11 +295,6 @@ public class SplendorGameState {
         for (Card rankCard : stateToCopy.rank3Stack) {
             this.rank3Stack.add(new Card(rankCard)); //uses copy constructor in card
         }
-
-        //TODO make noble class and copy constructor
-        initializeDecks();
-        initializeHands();
-        initializeCoins();
     }
 
     //helper method for constructor setting all point values for player to zero
@@ -359,6 +359,21 @@ public class SplendorGameState {
         this.p4PrestigePts = 0;
         this.p4NumCardsReserved = 0;
         this.p4ReserveCards = new ArrayList<Card>();
+    }
+
+    public void initializeBoard(ArrayList<Card> rank1, ArrayList<Card> rank2, ArrayList<Card> rank3){
+        this.board[2][0] = rank1.get(this.stack1Iterator++);
+        this.board[2][1] = rank1.get(this.stack1Iterator++);
+        this.board[2][2] = rank1.get(this.stack1Iterator++);
+        this.board[2][3] = rank1.get(this.stack1Iterator++);
+        this.board[1][0] = rank2.get(this.stack2Iterator++);
+        this.board[1][1] = rank2.get(this.stack2Iterator++);
+        this.board[1][2] = rank2.get(this.stack2Iterator++);
+        this.board[1][3] = rank2.get(this.stack2Iterator++);
+        this.board[0][0] = rank2.get(this.stack3Iterator++);
+        this.board[0][1] = rank3.get(this.stack3Iterator++);
+        this.board[0][2] = rank3.get(this.stack3Iterator++);
+        this.board[0][3] = rank3.get(this.stack3Iterator++);
     }
 
     //TODO file reading from three rank text files
