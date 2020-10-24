@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class SplendorGameState {
+public class SplendorGameState extends GameState{
 
     //~~~~~~~~~~~~~ player names and IDs ~~~~~~~~~~~ //
     //player display names
